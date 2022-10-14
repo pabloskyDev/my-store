@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'my-store';
+  name = 'Pablo';
+  age = 18;
+  img = 'https://nightsky.jpl.nasa.gov/images/news/HDP_896.jpg';
 }
