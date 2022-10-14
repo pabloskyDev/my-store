@@ -6,14 +6,7 @@ sum(45, 5);
 
 // Programación Orientada a Objetos
 class Person {
-  private age: number;
-  lastName: string;
-
-  // El constructor inicializa las variables.
-  constructor(age: number, lastName: string) {
-    this.age = age;
-    this.lastName = lastName;
-  }
+  constructor(public age: number, public lastName: string) { }
 }
 
 // Instancia de persona
