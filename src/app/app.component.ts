@@ -16,4 +16,13 @@ export class AppComponent {
     ageP: 22,
     avatar: 'https://nightsky.jpl.nasa.gov/images/news/HDP_896.jpg'
   }
+
+  // Método
+  toggleButton() {
+    this.btnDisabled = !this.btnDisabled;
+  }
+
+  increaseAge() {
+    this.person.ageP += 1;
+  }
 }
