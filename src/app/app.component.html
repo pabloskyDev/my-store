@@ -1,3 +1,12 @@
+<h1>Data binding</h1>
+<p>Name {{person.nameP}}</p>
+<input type="text" required #nameInput="ngModel" [(ngModel)]="person.nameP" >
+<p>Valid {{ nameInput.valid }}</p>
+
+<input type="number" max="18" min="10" required #ageInput="ngModel" [(ngModel)]="person.ageP" >
+<p>Valid {{ ageInput.valid }}</p>
+<hr>
+
 <h1>Event binding</h1>
 <button [disabled]="btnDisabled">Enviar</button>
 <button (click)="toggleButton()">Toggle Button</button>
