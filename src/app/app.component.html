@@ -1,8 +1,16 @@
+<h1>*ngIf</h1>
+<input type="text" required [(ngModel)]="person.nameP" >
+<p *ngIf="person.nameP === 'Pablo'">Soy Pablo</p>
+<p *ngIf="person.nameP === 'Julian' && person.ageP == 18; else myBlock">Soy Julian</p>
+<ng-template #myBlock>
+  <p>Bloque else</p>
+</ng-template>
+<hr />
+
 <h1>Data binding</h1>
 <p>Name {{person.nameP}}</p>
 <input type="text" required #nameInput="ngModel" [(ngModel)]="person.nameP" >
 <p>Valid {{ nameInput.valid }}</p>
-
 <input type="number" max="18" min="10" required #ageInput="ngModel" [(ngModel)]="person.ageP" >
 <p>Valid {{ ageInput.valid }}</p>
 <hr>
