@@ -17,6 +17,8 @@ export class AppComponent {
     avatar: 'https://nightsky.jpl.nasa.gov/images/news/HDP_896.jpg'
   }
 
+  names: (string | number)[] = ["juan", "nicolas", "pablo", "elijah", "ana"];
+  newName: string = '';
   // Método
   toggleButton() {
     this.btnDisabled = !this.btnDisabled;
@@ -34,5 +36,14 @@ export class AppComponent {
   changeName(event: Event) {
     const element = event.target as HTMLInputElement;
     this.person.nameP = element.value;
+  }
+
+  addName() {
+    this.names.push(this.newName);
+    this.newName = '';
+  }
+
+  deleteName(index: number) {
+    this.names.splice(index, 1);
   }
 }
