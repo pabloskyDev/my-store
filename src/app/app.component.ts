@@ -12,6 +12,11 @@ export class AppComponent {
   age = 18;
   img = 'https://nightsky.jpl.nasa.gov/images/news/HDP_896.jpg';
   btnDisabled: boolean = true;
+  register = {
+    nameR: '',
+    emailR: '',
+    password: '',
+  }
 
   person = {
     nameP: "Juan",
@@ -86,5 +91,9 @@ export class AppComponent {
 
   deleteName(index: number) {
     this.names.splice(index, 1);
+  }
+
+  onRegister() {
+    console.log(this.register);
   }
 }
