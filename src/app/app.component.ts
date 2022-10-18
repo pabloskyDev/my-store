@@ -7,6 +7,7 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  widthImg = 10;
   name = 'Pablo';
   age = 18;
   img = 'https://nightsky.jpl.nasa.gov/images/news/HDP_896.jpg';
