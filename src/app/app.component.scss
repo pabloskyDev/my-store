@@ -29,6 +29,17 @@
   }
 }
 
+.line-error {
+  height: 0;
+  border-bottom: 1px solid;
+  &.invalid {
+    border-color: #ff0000;
+  }
+  &.valid {
+    border-color: #00ff00;
+  }
+}
+
 .styles {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
