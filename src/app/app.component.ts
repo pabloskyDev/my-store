@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Product } from './product.model';
+import { Product } from './models/product.model';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,27 @@ import { Product } from './product.model';
 })
 export class AppComponent {
   imgParent = '';
+  products: Product[] = [
+    {
+      id: '1',
+      name: 'Automobil de juguete',
+      price: 100,
+      image: '../assets/images/jellyfish_right.jpg'
+    },
+    {
+      id: '2',
+      name: 'Muñeca de trapo',
+      price: 180,
+      image: '../assets/images/red_moon.jpg'
+    },
+    {
+      id: '3',
+      name: 'Pelota de futbol',
+      price: 120,
+      image: '../assets/images/universe.jpg'
+    }
+  ]
+
 
   onLoaded(event: string) {
     console.log('Log padre ', event);
