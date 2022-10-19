@@ -7,6 +7,9 @@ import { Product } from './product.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  // imgRender = '../assets/images/universe.jpg';
   imgParent = '';
+
+  onLoaded(event: string) {
+    console.log('Log padre ', event);
+  }
 }
