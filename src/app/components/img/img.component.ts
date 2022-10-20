@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewInit, OnDestroy, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-img',
@@ -6,11 +6,18 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges, AfterViewIni
   styleUrls: ['./img.component.scss']
 })
 export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy {
-
-  @Input() img: string = '';
+  img: string = '';
+  @Input('img')
+  set changeImg(newImg: string) {
+    this.img = newImg;
+    console.log('change just img =>', this.img);
+  }
+  @Input() alt: string = '';
   // Tal cual el evento es puesto aquí, es escuchado en el evento padre.
   @Output() loaded = new EventEmitter<string>();
   imageDefault = '../assets/images/default.png';
+  counter = 0;
+  counterFn: number | undefined;
   /**
    * Test images
    * https://www.m2crowd.com/core/i/placeholder.png
@@ -24,11 +31,12 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
     console.log('constructor', 'imgValue => ', this.img);
   }
 
-  ngOnChanges() {
+  ngOnChanges(changes: SimpleChanges) {
     // Corre antes y durante del render
     // Objetivo: Actualizar cambios en los inputs
     // Corre muchas veces
     console.log('ngOnChanges', 'imgValue => ', this.img);
+    console.log('changes, ', changes);
   }
 
   ngOnInit(): void {
@@ -36,6 +44,10 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
     // Se pueden correr cosas asincronas, aqui se espera la respuesta del servidor
     // Solo se corre una vez
     console.log('ngOnInit', 'imgValue => ', this.img);
+    this.counterFn = window.setInterval(() => {
+      this.counter += 1;
+      console.log('run counter')
+    }, 1000);
   }
 
   ngAfterViewInit(): void {
@@ -47,6 +59,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   ngOnDestroy(): void {
     // Eliminar el componente y se correo solo al eliminarlo
     console.log('ngOnDestroy');
+    window.clearInterval(this.counterFn);
   }
 
   imgError() {
