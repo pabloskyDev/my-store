@@ -11,6 +11,7 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { HeaderComponent } from './components/header/header.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
+import { VowelsNumberPipe } from './pipes/vowels-number.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TimeAgoPipe } from './pipes/time-ago.pipe';
     ProductListComponent,
     HeaderComponent,
     ReversePipe,
-    TimeAgoPipe
+    TimeAgoPipe,
+    VowelsNumberPipe
   ],
   imports: [
     BrowserModule,
