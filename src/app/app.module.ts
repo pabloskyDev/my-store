@@ -12,6 +12,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { VowelsNumberPipe } from './pipes/vowels-number.pipe';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { VowelsNumberPipe } from './pipes/vowels-number.pipe';
     HeaderComponent,
     ReversePipe,
     TimeAgoPipe,
-    VowelsNumberPipe
+    VowelsNumberPipe,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
