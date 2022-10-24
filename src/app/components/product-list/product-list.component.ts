@@ -13,8 +13,7 @@ export class ProductListComponent implements OnInit {
   myShoppingCart: Product[] = [];
   total = 0;
   products: Product[] = []
-  today = new Date();
-  date = new Date(2021, 5, 7);
+  showProductDetail = false;
 
   constructor(
     // Inyección de dependencias
@@ -35,5 +34,16 @@ export class ProductListComponent implements OnInit {
   onAddToShoppingCart(product: Product){
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
+  }
+
+  toggleProductDetail() {
+    this.showProductDetail = !this.showProductDetail;
+  }
+
+  onShowDetail(id: string) {
+    this.productsService.getProduct(id)
+    .subscribe(data => {
+      console.log('product ', data);
+    })
   }
 }
