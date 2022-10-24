@@ -14,6 +14,17 @@ export class ProductListComponent implements OnInit {
   total = 0;
   products: Product[] = []
   showProductDetail = false;
+  productChosen: Product = {
+    id: '',
+    price: 0,
+    images: [],
+    title: '',
+    category: {
+      id: '',
+      name: '',
+    },
+    description: ''
+  }
 
   constructor(
     // Inyección de dependencias
@@ -43,7 +54,8 @@ export class ProductListComponent implements OnInit {
   onShowDetail(id: string) {
     this.productsService.getProduct(id)
     .subscribe(data => {
-      console.log('product ', data);
+      this.toggleProductDetail();
+      this.productChosen = data;
     })
   }
 }
