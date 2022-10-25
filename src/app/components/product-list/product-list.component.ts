@@ -25,6 +25,8 @@ export class ProductListComponent implements OnInit {
     },
     description: ''
   }
+  limit = 10;
+  offset = 0;
 
   constructor(
     // Inyección de dependencias
@@ -35,15 +37,12 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productsService.getAllProducts()
-    .subscribe(data => {
-      this.products = data;
-      console.log(data);
-    });
+    this.loadMore();
   }
 
   onAddToShoppingCart(product: Product){
-    this.storeService.addProduct(product);
+    this.storeService
+    .addProduct(product);
     this.total = this.storeService.getTotal();
   }
 
@@ -52,7 +51,8 @@ export class ProductListComponent implements OnInit {
   }
 
   onShowDetail(id: string) {
-    this.productsService.getProduct(id)
+    this.productsService
+    .getProduct(id)
     .subscribe(data => {
       this.toggleProductDetail();
       this.productChosen = data;
@@ -67,7 +67,8 @@ export class ProductListComponent implements OnInit {
       price: 1000,
       categoryId: 1
     }
-    this.productsService.create(product)
+    this.productsService
+    .create(product)
     .subscribe(data => {
       this.products.unshift(data);
     })
@@ -78,7 +79,8 @@ export class ProductListComponent implements OnInit {
       title: 'Changes tittle',
     }
     const id = this.productChosen.id;
-    this.productsService.update(id, changes)
+    this.productsService
+    .update(id, changes)
     .subscribe(data => {
       const productIndex = this.products.findIndex(item => item.id === this.productChosen.id);
       this.products[productIndex] = data;
@@ -88,11 +90,21 @@ export class ProductListComponent implements OnInit {
 
   deleteProduct() {
     const id = this.productChosen.id;
-    this.productsService.delete(id)
+    this.productsService
+    .delete(id)
     .subscribe(() => {
       const productIndex = this.products.findIndex(item => item.id === this.productChosen.id);
       this.products.splice(productIndex, 1);
       this.showProductDetail = false;
+    });
+  }
+
+  loadMore() {
+    this.productsService
+    .getProductsByPage(this.limit, this.offset)
+    .subscribe(data => {
+      this.products = [...this.products, ...data];
+      this.offset += this.limit;
     });
   }
 }
