@@ -11,7 +11,8 @@ import { environment } from './../../environments/environment';
 })
 export class ProductsService {
 
-  private apiUrl = `${environment.API_URL}/api`;
+  // private apiUrl = `${environment.API_URL}/api/products`;
+  private apiUrl = `https://young-sands-07814.herokuapp.com/api/products`;
 
   constructor(
     private http: HttpClient
@@ -23,31 +24,31 @@ export class ProductsService {
       params = params.set('limit', limit);
       params = params.set('offset', offset);
     }
-    return this.http.get<Product[]>(`${this.apiUrl}/products`, { params })
+    return this.http.get<Product[]>(`${this.apiUrl}`, { params })
     .pipe(
       retry(2)
     );
   }
 
   getProduct(id: string) {
-    return this.http.get<Product>(`${this.apiUrl}/products/${id}`);
+    return this.http.get<Product>(`${this.apiUrl}/${id}`);
   }
 
   getProductsByPage(limit: number, offset: number) {
-    return this.http.get<Product[]>(`${this.apiUrl}/products`, {
+    return this.http.get<Product[]>(`${this.apiUrl}`, {
       params: {limit, offset}
     });
   }
 
   create(dto: CreateProductDTO) {
-    return this.http.post<Product>(`${this.apiUrl}/products`, dto);
+    return this.http.post<Product>(`${this.apiUrl}`, dto);
   }
 
   update(id: string, dto: UpdateProductDTO) {
-    return this.http.put<Product>(`${this.apiUrl}/products/${id}`, dto);
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, dto);
   }
 
   delete(id: string) {
-    return this.http.delete<boolean>(`${this.apiUrl}/products/${id}`);
+    return this.http.delete<boolean>(`${this.apiUrl}/${id}`);
   }
 }
