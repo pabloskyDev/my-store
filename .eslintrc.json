@@ -12,6 +12,7 @@
         "project": [
           "tsconfig.json"
         ],
+        "tsconfigRootDir": "my-store/",
         "createDefaultProgram": true
       },
       "extends": [
