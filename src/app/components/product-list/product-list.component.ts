@@ -67,7 +67,7 @@ export class ProductListComponent implements OnInit {
         console.log(errorMsg);
         Swal.fire({
           title: 'Error!',
-          text: errorMsg.message,
+          text: errorMsg,
           icon: 'error',
           confirmButtonText: 'Ok',
         });
