@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
-import { UsersService } from 'src/app/services/users.service';
+import { AuthService } from '../../services/auth.service';
+import { UsersService } from '../../services/users.service';
 
 
 @Component({
@@ -9,6 +9,7 @@ import { UsersService } from 'src/app/services/users.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  token: string = '';
 
   constructor(
     private authService: AuthService,
@@ -33,7 +34,14 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login('juan-test@mail.com','98741')
     .subscribe(rta => {
-      console.log(rta.access_token)
+      this.token = rta.access_token;
+    })
+  }
+
+  getProfile() {
+    this.authService.profile(this.token)
+    .subscribe(profile => {
+      console.log(profile)
     })
   }
 

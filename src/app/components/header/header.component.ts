@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
 
 import { StoreService } from '../../services/store.service';
+import { AuthService } from '../../services/auth.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-header',
@@ -11,9 +14,18 @@ export class HeaderComponent implements OnInit {
 
   activeMenu: boolean = false;
   counter = 0;
+  token: string = '';
+  profile: User = {
+    id: '',
+    email: '',
+    password: '',
+    name: ''
+  }
+
 
   constructor(
-    private storeService: StoreService
+    private storeService: StoreService,
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -26,4 +38,18 @@ export class HeaderComponent implements OnInit {
     this.activeMenu = !this.activeMenu;
   }
 
+  login() {
+    this.authService
+    .login('juan-test@mail.com','98741')
+    .pipe(
+      switchMap(actualToken => {
+        this.token = actualToken.access_token;
+        console.log(this.token)
+        return this.authService.profile(this.token);
+      })
+    )
+    .subscribe(data => {
+      this.profile = data;
+    })
+  }
 }
