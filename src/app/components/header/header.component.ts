@@ -14,13 +14,13 @@ export class HeaderComponent implements OnInit {
 
   activeMenu: boolean = false;
   counter = 0;
-  token: string = '';
   profile: User = {
     id: '',
     email: '',
     password: '',
     name: ''
   }
+  profileValid: boolean = false;
 
 
   constructor(
@@ -40,16 +40,17 @@ export class HeaderComponent implements OnInit {
 
   login() {
     this.authService
-    .login('juan-test@mail.com','98741')
-    .pipe(
-      switchMap(actualToken => {
-        this.token = actualToken.access_token;
-        console.log(this.token)
-        return this.authService.profile(this.token);
-      })
-    )
-    .subscribe(data => {
-      this.profile = data;
+    .loginAndGet('juan-test@mail.com','98741')
+    // .pipe(
+    //   switchMap(actualToken => {
+    //     this.token = actualToken.access_token;
+    //     console.log(this.token)
+    //     return this.authService.profile(this.token);
+    //   })
+    // )
+    .subscribe(user => {
+      this.profileValid = true;
+      this.profile = user;
     })
   }
 }
