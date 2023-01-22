@@ -9,11 +9,9 @@
         "*.ts"
       ],
       "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ],
-        "tsconfigRootDir": "my-store/",
-        "createDefaultProgram": true
+        "project": "./tsconfig.json",
+        "tsconfigRootDir": "__dirname",
+        "sourceType": "module"
       },
       "extends": [
         "plugin:@angular-eslint/recommended",

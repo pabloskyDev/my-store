@@ -4,9 +4,12 @@ import { switchMap } from 'rxjs/operators';
 import { StoreService } from '../../services/store.service';
 import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/user.model';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [ CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

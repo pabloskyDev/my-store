@@ -6,25 +6,18 @@ import { SwiperModule } from 'swiper/angular';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ImgComponent } from './components/img/img.component';
-import { ProductComponent } from './components/product/product.component';
-import { ProductListComponent } from './components/product-list/product-list.component';
-import { HeaderComponent } from './components/header/header.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { VowelsNumberPipe } from './pipes/vowels-number.pipe';
 import { HighlightDirective } from './directives/highlight.directive';
-import { LoginComponent } from './components/login/login.component';
+
 import { TimeInterceptor } from './interceptors/time.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { LoginComponent } from './public/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ImgComponent,
-    ProductComponent,
-    ProductListComponent,
-    HeaderComponent,
     ReversePipe,
     TimeAgoPipe,
     VowelsNumberPipe,

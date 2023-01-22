@@ -1,9 +1,13 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { ImgComponent } from 'src/app/components/img/img.component';
 
-import { Product } from '../../models/product.model';
+import { Product } from '../../../models/product.model';
 
 @Component({
   selector: 'app-product',
+  standalone: true,
+  imports: [ CommonModule, ImgComponent ],
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.scss']
 })
