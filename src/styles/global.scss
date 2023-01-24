@@ -1,0 +1,108 @@
+@import "./bootstrap_layout.scss";
+@import "./spacing.scss";
+
+.flex {
+  display: flex;
+  .spacer {
+    flex: 1 1 auto;
+  }
+  &.around {
+    justify-content: space-around;
+  }
+  &.center {
+    align-items: center;
+  }
+  &.between {
+    justify-content: space-between;
+  }
+  &.evenly {
+    justify-content: space-evenly;
+  }
+  &.end {
+    justify-content: end;
+  }
+  &.column {
+    flex-direction: column;
+  }
+  &.column-around {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  &.column-center {
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.flex-column-center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1, h2, h3, p {
+  color: #ffffff;
+  &.no-margin {
+    margin: 0;
+  }
+}
+.gap {
+  &-1 {
+    gap: 0.5rem;
+  }
+  &-2 {
+    gap: 1rem;
+  }
+  &-4 {
+    gap: 2rem;
+  }
+  &-8 {
+    gap: 4rem;
+  }
+}
+.text {
+  &.center {
+    text-align: center;
+  }
+  &.white {
+    color: var(--white);
+  }
+}
+.min-h {
+  min-height: 100vh;
+}
+.w-80 {
+  width: 80%;
+}
+.w-full {
+  width: 100%;
+}
+.button {
+  width: 100%;
+  padding: 1rem;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.bg-primary {
+  background-color: var(--primary);
+  color: var(--white);
+  border: 1px solid var(--primary);
+  &:hover {
+    background-color: var(--bg-white);
+    color: var(--primary);
+  }
+}
+.bg-secondary {
+  background-color: var(--bg-white);
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  &:hover {
+    background-color: var(--primary);
+    color: var(--white);
+  }
+}

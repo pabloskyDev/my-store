@@ -9,6 +9,15 @@
 
 * {
   font-family: 'Quicksand', sans-serif;
+  background: var(--bg-white);
+}
+
+:root {
+  --primary: #ACD9B2;
+  --secondary: #E7E7E7;
+  --black: #000000;
+  --bg-white: #F2F2F2;
+  --white: #FFFFFF;
 }
 
 .products--grid {
