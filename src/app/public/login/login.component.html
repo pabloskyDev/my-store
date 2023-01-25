@@ -1,8 +1,29 @@
 <div class="container p-2">
   <div class="row flex-center">
-    <div class="col-md-6">
-      <button mat-button (click)="createUser()" class="button mb-2 bg-primary">Create user</button>
-      <button mat-button (click)="login()" class="button mb-2 bg-secondary">Login</button>
+    <div class="main-login flex column between min-h">
+      <div class="main-login__cancel">
+        <span class="material-symbols-outlined">close</span>
+      </div>
+      <div class="main-login__form col-md-6 col-12 mx-auto">
+        <div class="form-logo flex-center mb-3">
+          <img src="../../../assets/svg/logo_yard_sale.svg" alt="logo yard_sale" width="200px" height="45px">
+        </div>
+        <form class="w-full">
+          <label for="email" class="d-block pb-1 mt-2">
+            Email address
+            <input matInput type="text" name="email" id="email" class="input" placeholder="pablo@noreal.com" autocomplete="off">
+          </label>
+          <label for="password" class="d-block pb-1 mt-2">
+            Password
+            <input matInput type="password" name="password" id="password" class="input" autocomplete="off">
+          </label>
+          <button mat-button type="submit" (click)="login()" class="button mb-2 bg-primary mt-2 mb-2">Log in</button>
+        </form>
+        <a href="#" class="mt-2 mb-2">Forgot my password</a>
+      </div>
+      <div class="main-login__signup col-md-6 col-12 mx-auto">
+        <button mat-button (click)="createUser()" class="button mb-2 bg-secondary">Sign up</button>
+      </div>
     </div>
   </div>
 </div>

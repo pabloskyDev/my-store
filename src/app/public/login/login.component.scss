@@ -1,0 +1,29 @@
+.main-login {
+  &__cancel {
+    text-align: end;
+    span {
+      color: var(--secondary);
+      cursor: pointer;
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+  &__form {
+    form {
+      label {
+        font-weight: 700;
+      }
+    }
+    a {
+      display: inline-block;
+      text-decoration: none;
+      color: var(--primary);
+      display: grid;
+      place-content: center;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

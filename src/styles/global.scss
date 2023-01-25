@@ -81,6 +81,9 @@ h1, h2, h3, p {
 .w-full {
   width: 100%;
 }
+.d-block {
+  display: block;
+}
 .button {
   width: 100%;
   padding: 1rem;
@@ -105,4 +108,13 @@ h1, h2, h3, p {
     background-color: var(--primary);
     color: var(--white);
   }
+}
+.input {
+  display: block;
+  width: 100%;
+  padding: 14px;
+  margin: 4px 0;
+  background: var(--secondary);
+  border-radius: 10px;
+  border: 0;
 }
