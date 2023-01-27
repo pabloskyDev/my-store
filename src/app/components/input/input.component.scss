@@ -1,0 +1,12 @@
+label {
+  font-weight: 700;
+  .inputError {
+    border: 1px solid #D25050;
+  }
+  .noInputError {
+    border: 0;
+  }
+  .error {
+    color: #D25050;
+  }
+}

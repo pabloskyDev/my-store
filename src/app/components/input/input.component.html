@@ -1,0 +1,12 @@
+<div *ngIf="type === 'text' || type === 'password' || type === 'number'">
+  <label for="email" class="d-block pb-1 mt-2">
+    {{ label }}
+    <input matInput [type]="type" name="email" [formControl]="control" class="input" [ngClass]="(control.touched && control.errors && control.hasError('required')) ? 'inputError' : 'noInputError'" [placeholder]="placeholder" autocomplete="off">
+    <div *ngIf="control.touched && control.errors && control.hasError('required')" class="error">
+      {{ label }} is required
+    </div>
+    <div *ngIf="control.touched && control.errors && control.hasError('email')" class="error">
+      It must be a valid email
+    </div>
+  </label>
+</div>
