@@ -8,16 +8,10 @@
         <div class="form-logo flex-center mb-3">
           <img src="../../../assets/svg/logo_yard_sale.svg" alt="logo yard_sale" width="200px" height="45px">
         </div>
-        <form class="w-full">
-          <label for="email" class="d-block pb-1 mt-2">
-            Email address
-            <input matInput type="text" name="email" id="email" class="input" placeholder="pablo@noreal.com" autocomplete="off">
-          </label>
-          <label for="password" class="d-block pb-1 mt-2">
-            Password
-            <input matInput type="password" name="password" id="password" class="input" autocomplete="off">
-          </label>
-          <button mat-button type="submit" (click)="login()" class="button mb-2 bg-primary mt-2 mb-2">Log in</button>
+        <form class="w-full" [formGroup]="formLogin" (ngSubmit)="onSubmit()" >
+          <app-input label="Email address" placeholder="pablo@noreal.com" formControlName="email"></app-input>
+          <app-input label="Password" formControlName="password" type="password"></app-input>
+          <button mat-button type="submit" class="button mb-2 bg-primary mt-2 mb-2">Log in</button>
         </form>
         <a href="#" class="mt-2 mb-2">Forgot my password</a>
       </div>
