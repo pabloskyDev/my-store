@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SwiperModule } from 'swiper/angular';
 
@@ -13,7 +12,6 @@ import { HighlightDirective } from './directives/highlight.directive';
 
 import { TimeInterceptor } from './interceptors/time.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
-import { LoginComponent } from './public/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,12 +19,10 @@ import { LoginComponent } from './public/login/login.component';
     ReversePipe,
     TimeAgoPipe,
     VowelsNumberPipe,
-    HighlightDirective,
-    LoginComponent
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
-    FormsModule,
     HttpClientModule,
     AppRoutingModule,
     SwiperModule

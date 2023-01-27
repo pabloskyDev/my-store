@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './public/login/login.component';
 
 const routes: Routes = [
   {
     path: 'auth',
-    component: LoginComponent
+    loadChildren: () => import('./public/public.module').then(m => m.PublicModule)
   },
   {
     path: '',
@@ -13,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    component: LoginComponent
+    loadChildren: () => import('./pages/pages.module').then(m => m.PagesModule)
   }
 ];
 
