@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment'
 import { Auth } from '../models/auth.model'
 import { User } from '../models/user.model'
 import { TokenService } from './token.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +17,17 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private router: Router
   ) { }
 
   login(email: string, password: string){
     return this.http.post<Auth>(`${this.apiUrl}/login`, {email, password})
     .pipe(
-      tap(response => this.tokenService.saveToken(response.access_token))
+      tap((res) => {
+        this.tokenService.saveToken(res.access_token);
+        this.router.navigate(['']);
+      })
     );
   }
 
