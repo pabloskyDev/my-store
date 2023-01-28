@@ -7,13 +7,15 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../components/input/input.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { EmailSentComponent } from './email-sent/email-sent.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RecoveryComponent,
-    EmailSentComponent
+    EmailSentComponent,
+    NewPasswordComponent
   ],
   imports: [
     CommonModule,

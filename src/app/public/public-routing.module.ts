@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmailSentComponent } from './email-sent/email-sent.component';
 import { LoginComponent } from './login/login.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 
 const routes: Routes = [
@@ -14,13 +15,13 @@ const routes: Routes = [
     component: RecoveryComponent
   },
   {
+    path: 'recovery/:id',
+    component: NewPasswordComponent
+  },
+  {
     path: 'sent',
     component: EmailSentComponent
   },
-  // {
-  //   path: 'new-password',
-  //   component: LoginComponent
-  // },
   // {
   //   path: 'new-account',
   //   component: LoginComponent
