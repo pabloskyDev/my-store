@@ -1,0 +1,25 @@
+.main-sent {
+  display: grid;
+  place-items: center;
+  &__img {
+    background-color: var(--secondary);
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    margin: 0 auto;
+    img {
+      width: 100%;
+      color: var(--primary);
+      background-color: var(--secondary);
+      border-radius: 100%;
+    }
+  }
+  &__anchor {
+    p {
+      color: var(--grey);
+      a {
+        display: inline-block;
+      }
+    }
+  }
+}

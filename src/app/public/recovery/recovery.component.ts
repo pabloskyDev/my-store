@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-recovery',
@@ -14,7 +15,8 @@ export class RecoveryComponent implements OnInit {
   })
 
   constructor(
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,6 +26,7 @@ export class RecoveryComponent implements OnInit {
     this.formRecovery.markAllAsTouched();
     if (this.formRecovery.invalid) return;
 
+    this.router.navigate(['/auth/sent']);
   }
 
 }
