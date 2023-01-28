@@ -1,0 +1,20 @@
+<div class="container px-2">
+  <div class="row flex-center">
+    <div class="main-recovery min-h">
+      <div class="main-recovery__form col-md-6 col-12 mx-auto">
+        <div class="form-logo flex-center mb-3">
+          <img src="../../../assets/svg/logo_yard_sale.svg" alt="logo yard_sale" width="150px" height="45px">
+        </div>
+        <div class="main-recovery__message text center">
+          <p class="p-bold py-2">Password recovery</p>
+          <p class="p-text pb-2">Inform the email address used to create your account</p>
+        </div>
+        <form class="w-full" [formGroup]="formRecovery" (ngSubmit)="onSubmit()" >
+          <app-input label="Email address" placeholder="pablo@noreal.com" formControlName="email"></app-input>
+          <button mat-button type="submit" class="button mb-2 bg-primary mt-2 mb-2">Submit</button>
+        </form>
+        <a class="mt-2 mb-2" routerLink="/auth">Back to log in</a>
+      </div>
+    </div>
+  </div>
+</div>

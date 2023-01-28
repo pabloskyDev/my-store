@@ -5,11 +5,13 @@ import { PublicRoutingModule } from './public-routing.module';
 import { LoginComponent } from './login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../components/input/input.component';
+import { RecoveryComponent } from './recovery/recovery.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    RecoveryComponent
   ],
   imports: [
     CommonModule,
