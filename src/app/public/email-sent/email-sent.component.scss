@@ -3,15 +3,17 @@
   place-items: center;
   &__img {
     background-color: var(--secondary);
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 100%;
     margin: 0 auto;
+    position: relative;
     img {
-      width: 100%;
-      color: var(--primary);
+      width: 75px;
       background-color: var(--secondary);
-      border-radius: 100%;
+      position: absolute;
+      left: 40px;
+      top: 40px;
     }
   }
   &__anchor {
