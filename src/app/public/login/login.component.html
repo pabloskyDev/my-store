@@ -1,4 +1,4 @@
-<div class="container p-2">
+<div class="container px-2">
   <div class="row flex-center">
     <div class="main-login flex column between min-h">
       <div class="main-login__cancel">
@@ -13,7 +13,7 @@
           <app-input label="Password" formControlName="password" type="password"></app-input>
           <button mat-button type="submit" class="button mb-2 bg-primary mt-2 mb-2">Log in</button>
         </form>
-        <a href="#" class="mt-2 mb-2">Forgot my password</a>
+        <a class="mt-2 mb-2" routerLink="/auth/recovery">Forgot my password</a>
       </div>
       <div class="main-login__signup col-md-6 col-12 mx-auto">
         <button mat-button (click)="createUser()" class="button mb-2 bg-secondary">Sign up</button>

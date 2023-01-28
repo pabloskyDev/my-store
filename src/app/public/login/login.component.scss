@@ -9,16 +9,4 @@
       }
     }
   }
-  &__form {
-    a {
-      display: inline-block;
-      text-decoration: none;
-      color: var(--primary);
-      display: grid;
-      place-content: center;
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
 }
