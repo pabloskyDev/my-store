@@ -117,3 +117,27 @@ h1, h2, h3, p {
   border-radius: 10px;
   border: 0;
 }
+a {
+  display: inline-block;
+  text-decoration: none;
+  color: var(--primary);
+  display: grid;
+  place-content: center;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.p-bold {
+  font-size: 16px;
+  font-weight: bold;
+}
+.p-text {
+  font-size: 16px;
+  color: var(--grey);
+}
+
+@media screen and (min-width: 600px){
+  .p-bold, .p-text {
+    font-size: 18px;
+  }
+}
