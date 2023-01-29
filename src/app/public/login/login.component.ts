@@ -13,7 +13,7 @@ export class LoginComponent {
   token!: string;
   profile!: User;
   formLogin = this.fb.nonNullable.group({
-    email: ['john@mail.com', [Validators.required, Validators.email]],
+    email: ['juan@noreal.com', [Validators.required, Validators.email]],
     password: ['', Validators.required]
   })
 
@@ -45,18 +45,6 @@ export class LoginComponent {
       }
     });
 
-  }
-
-  //todo create-account
-  createUser() {
-    this.usersService.create({
-      name: 'Juan',
-      email: 'juan-test@mail.com',
-      password: '98741'
-    })
-    .subscribe(rta => {
-      console.log(rta)
-    })
   }
 
 }

@@ -1,10 +1,9 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { switchMap } from 'rxjs/operators';
 
+import { User } from '../../models/user.model';
 import { StoreService } from '../../services/store.service';
 import { AuthService } from '../../services/auth.service';
-import { User } from '../../models/user.model';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',

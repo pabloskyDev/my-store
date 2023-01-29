@@ -1,5 +1,5 @@
 <div class="container px-2">
-  <div class="row flex-center">
+  <div class="row">
     <div class="main-login flex column between min-h">
       <div class="main-login__cancel">
         <span class="material-symbols-outlined">close</span>
@@ -10,13 +10,13 @@
         </div>
         <form class="w-full" [formGroup]="formLogin" (ngSubmit)="onSubmit()" >
           <app-input label="Email address" placeholder="pablo@noreal.com" formControlName="email"></app-input>
-          <app-input label="Password" formControlName="password" type="password"></app-input>
+          <app-input label="Password" placeholder="*********" formControlName="password" type="password"></app-input>
           <button mat-button type="submit" class="button mb-2 bg-primary mt-2 mb-2">Log in</button>
         </form>
         <a class="mt-2 mb-2" routerLink="/auth/recovery">Forgot my password</a>
       </div>
       <div class="main-login__signup col-md-6 col-12 mx-auto">
-        <button mat-button (click)="createUser()" class="button mb-2 bg-secondary">Sign up</button>
+        <button mat-button routerLink="/auth/new-account" class="button mb-2 bg-secondary">Sign up</button>
       </div>
     </div>
   </div>
