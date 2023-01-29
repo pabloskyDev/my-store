@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="main-new-account">
+      <app-header></app-header>
+      <div class="main-new-account__message px-2 mt-4 mb-4 col-md-6 col-12 mx-auto">
+        <p class="p-bold">My account</p>
+      </div>
+      <form class="col-md-6 col-12 mx-auto px-2 flex column between min-70" [formGroup]="newAccountForm" (ngSubmit)="onSubmit()">
+        <div>
+          <app-input label="Name" placeholder="Camilo Navar" formControlName="name"></app-input>
+          <app-input label="Email address" placeholder="pablo@noreal.com" formControlName="email"></app-input>
+          <app-input label="Password" placeholder="**********" formControlName="password" type="password"></app-input>
+        </div>
+        <button mat-button type="submit" class="button mb-2 bg-primary mt-2 mb-2">Create</button>
+      </form>
+    </div>
+  </div>
+</div>

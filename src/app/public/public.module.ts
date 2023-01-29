@@ -8,6 +8,8 @@ import { InputComponent } from '../components/input/input.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { EmailSentComponent } from './email-sent/email-sent.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
+import { NewAccountComponent } from './new-account/new-account.component';
+import { HeaderComponent } from '../components/header/header.component';
 
 
 @NgModule({
@@ -15,14 +17,16 @@ import { NewPasswordComponent } from './new-password/new-password.component';
     LoginComponent,
     RecoveryComponent,
     EmailSentComponent,
-    NewPasswordComponent
+    NewPasswordComponent,
+    NewAccountComponent
   ],
   imports: [
     CommonModule,
     PublicRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    InputComponent
+    InputComponent,
+    HeaderComponent
   ]
 })
 export class PublicModule { }
