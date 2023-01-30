@@ -80,11 +80,20 @@ h1, h2, h3, p {
 .min-32 {
   min-height: calc(100vh - 32px);
 }
+.min-wh {
+  min-height: calc(100vh - 91px);
+}
 .w-80 {
   width: 80%;
 }
 .w-full {
   width: 100%;
+}
+.header {
+  position: fixed;
+}
+.space-header {
+  padding-top: 75px;
 }
 .d-block {
   display: block;
@@ -145,7 +154,13 @@ a {
   border-top: 1px solid var(--light-grey);
 }
 
-@media screen and (min-width: 600px){
+@media screen and (min-width: 640px){
+  .min-wh {
+    min-height: calc(100vh - 105px);
+  }
+  .space-header {
+    padding-top: 89px;
+  }
   .p-bold, .p-text {
     font-size: 18px;
   }
