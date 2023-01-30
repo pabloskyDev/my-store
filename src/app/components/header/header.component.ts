@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { StoreService } from '../../services/store.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -14,23 +15,22 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  activeMenu: boolean = false;
+  activeMenu = false;
   counter = 0;
-  profile: User = {
-    id: '',
-    email: '',
-    password: '',
-    name: ''
-  }
-  profileValid: boolean = false;
+  profile!: User;
+  profileValid = false;
 
+  showAccount = false;
+  email = '';
 
   constructor(
     private storeService: StoreService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.loggedIn();
     this.storeService.myCart$.subscribe(products => {
       this.counter = products.length;
     })
@@ -40,7 +40,25 @@ export class HeaderComponent implements OnInit {
     this.activeMenu = !this.activeMenu;
   }
 
+  loggedIn() {
+    if(localStorage.getItem('token')) {
+      this.showAccount = true;
+      this.email = localStorage.getItem('email') || '';
+    }else {
+      this.showAccount = false;
+    }
+  }
+
   login() {
+    this.router.navigate(['/auth']);
+  }
+
+  logout() {
+    this.authService.logOut();
+  }
+
+  // Todo delete this function
+  /*login() {
     this.authService
     .loginAndGet('juan-test@mail.com','98741')
     // .pipe(
@@ -54,5 +72,5 @@ export class HeaderComponent implements OnInit {
       this.profileValid = true;
       this.profile = user;
     })
-  }
+  }*/
 }

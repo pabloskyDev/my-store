@@ -2,10 +2,6 @@
   display: block;
   box-shadow: 0px 2px 5px rgb(black, .2);
   > div {
-    padding: 1em;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     button {
       border: 0;
       background: transparent;
@@ -18,11 +14,45 @@
     bottom: 0;
     right: 0;
     background-color: #ffffff;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
     transform: translateX(-100%);
     transition: all ease-out .5s;
+    &__cancel {
+      text-align: end;
+      button {
+        color: var(--secondary);
+        cursor: pointer;
+        &:hover {
+          color: var(--primary);
+        }
+      }
+    }
+    .navigation {
+      height: calc(100vh - 78px);
+      overflow-y: auto;
+      &__articles, &__auth {
+        a {
+          display: block;
+          color: var(--black);
+          padding: 18px 0;
+          text-decoration: none;
+          &:active {
+            background: var(--primary);
+          }
+        }
+      }
+      &__login {
+        a {
+          display: block;
+          font-size: 14px;
+          text-decoration: none;
+        }
+        .logout {
+          p {
+            font-size: 14px;
+          }
+        }
+      }
+    }
     &.active {
       transform: translateX(0);
     }
