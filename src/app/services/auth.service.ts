@@ -31,6 +31,16 @@ export class AuthService {
     );
   }
 
+  logOut() {
+    this.clearStorage();
+    this.router.navigate(['/auth']);
+  }
+
+  clearStorage() {
+    localStorage.removeItem('token');
+    localStorage.removeItem('email');
+  }
+
   profile(){
     // const headers = new HttpHeaders();
     // headers.set('Authorization', `Bearer ${token}`)
@@ -48,5 +58,4 @@ export class AuthService {
       switchMap(() => this.profile())
     )
   }
-
 }
