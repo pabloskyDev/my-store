@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { StoreService } from '../../services/store.service';
 import { AuthService } from '../../services/auth.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -25,8 +24,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private storeService: StoreService,
-    private authService: AuthService,
-    private router: Router
+    private authService: AuthService
   ) { }
 
   ngOnInit(): void {
@@ -49,16 +47,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  login() {
-    this.router.navigate(['/auth']);
-  }
-
   logout() {
     this.authService.logOut();
   }
 
   // Todo delete this function
-  /*login() {
+  login() {
     this.authService
     .loginAndGet('juan-test@mail.com','98741')
     // .pipe(
@@ -72,5 +66,5 @@ export class HeaderComponent implements OnInit {
       this.profileValid = true;
       this.profile = user;
     })
-  }*/
+  }
 }
