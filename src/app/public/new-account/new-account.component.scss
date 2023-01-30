@@ -1,0 +1,13 @@
+.main-new-account {
+  &__form {
+    height: calc(100vh - 98px);
+  }
+}
+
+@media screen and (min-width: 600px){
+  .main-new-account {
+    &__form {
+      height: calc(100vh - 108px);
+    }
+  }
+}

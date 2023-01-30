@@ -1,17 +1,18 @@
-<div class="container">
+<app-header class="w-full header"></app-header>
+<div class="container space-header p-2">
   <div class="row">
-    <div class="main-new-account">
-      <app-header></app-header>
-      <div class="main-new-account__message px-2 mt-4 mb-4 col-md-6 col-12 mx-auto">
-        <p class="p-bold">My account</p>
+    <div class="main-new-account w-full min-wh">
+      <div class="main-new-account__message col-md-6 col-12 mx-auto">
       </div>
-      <form class="col-md-6 col-12 mx-auto px-2 flex column between min-70" [formGroup]="newAccountForm" (ngSubmit)="onSubmit()">
+      <form class="main-new-account__form col-md-6 col-12 mx-auto flex column between" [formGroup]="newAccountForm" (ngSubmit)="onSubmit()">
+        <p class="p-bold">My account</p>
+
         <div>
           <app-input label="Name" placeholder="Camilo Navar" formControlName="name"></app-input>
           <app-input label="Email address" placeholder="pablo@noreal.com" formControlName="email"></app-input>
           <app-input label="Password" placeholder="**********" formControlName="password" type="password"></app-input>
         </div>
-        <button mat-button type="submit" class="button mb-2 bg-primary mt-2 mb-2">Create</button>
+        <button mat-button type="submit" class="button bg-primary">Create</button>
       </form>
     </div>
   </div>
