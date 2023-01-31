@@ -41,21 +41,14 @@ export class AuthService {
     localStorage.removeItem('email');
   }
 
-  profile(){
-    // const headers = new HttpHeaders();
-    // headers.set('Authorization', `Bearer ${token}`)
+  profile(token: string){
+    const headers = new HttpHeaders();
+    headers.set('Authorization', `Bearer ${token}`)
     return this.http.get<User>(`${this.apiUrl}/profile`, {
-      // headers: {
-      //   Authorization: `Bearer ${token}`,
-      //   'Content-type': 'application/json'
-      // }
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-type': 'application/json'
+      }
     });
-  }
-
-  loginAndGet(email: string, password: string) {
-    return this.login(email, password)
-    .pipe(
-      switchMap(() => this.profile())
-    )
   }
 }
