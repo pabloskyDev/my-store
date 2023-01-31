@@ -53,7 +53,7 @@ export class HeaderComponent implements OnInit {
 
   // Todo delete this function
   login() {
-    this.authService
+    /*this.authService
     .loginAndGet('juan-test@mail.com','98741')
     // .pipe(
     //   switchMap(actualToken => {
@@ -65,6 +65,6 @@ export class HeaderComponent implements OnInit {
     .subscribe(user => {
       this.profileValid = true;
       this.profile = user;
-    })
+    })*/
   }
 }
