@@ -6,7 +6,6 @@ import { StoreService } from '../../services/store.service'
 import { ProductsService } from '../../services/products.service'
 
 import { switchMap } from 'rxjs/operators'
-import { zip } from 'rxjs'
 import Swal from 'sweetalert2'
 
 @Component({

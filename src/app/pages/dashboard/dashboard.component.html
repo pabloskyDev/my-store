@@ -1,20 +1,24 @@
-<app-header></app-header>
-<p>
-  <a href="../../../assets/files/texto.txt" download>Descargar</a>
-</p>
-<p>
-  <button (click)="downloadPdf()">Descargar PDF</button>
-</p>
-<p>
-  <input type="file" (change)="onUpload($event)">
-  <img *ngIf="imgRta" [src]="imgRta">
-</p>
+<app-header class="header w-full"></app-header>
+<div class="container space-header p-1">
+  <div class="row min-wh">
+    <p>
+      <a href="../../../assets/files/texto.txt" download>Descargar</a>
+    </p>
+    <p>
+      <button (click)="downloadPdf()">Descargar PDF</button>
+    </p>
+    <p>
+      <input type="file" (change)="onUpload($event)">
+      <img *ngIf="imgRta" [src]="imgRta">
+    </p>
 
-<app-product-list></app-product-list>
+    <app-product-list></app-product-list>
 
-<!-- <p><input type="text" [(ngModel)]="imgParent" ></p> -->
-<button (click)="toggleImg()">Toggle img</button>
-<p> {{ showImg }} </p>
-<app-img *ngIf="showImg" (loaded)="onLoaded($event)" [img]="imgParent"></app-img>
+    <!-- <p><input type="text" [(ngModel)]="imgParent" ></p> -->
+    <button (click)="toggleImg()">Toggle img</button>
+    <p> {{ showImg }} </p>
+    <app-img *ngIf="showImg" (loaded)="onLoaded($event)" [img]="imgParent"></app-img>
+  </div>
+</div>
 <hr />
 
