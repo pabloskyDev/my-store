@@ -33,14 +33,10 @@ export class NewAccountComponent implements OnInit {
 
   createUser() {
     this.usersService.create(
-      // {name: 'Juan',
-      // email: 'juan@noreal.com',
-      // password: '1234'}
       this.newAccountForm.getRawValue()
     )
     .subscribe({
       next: (res) => {
-        // console.log(res);
         this.router.navigate(['/auth']);
       },
       error: (err) => {
