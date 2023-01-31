@@ -1,9 +1,17 @@
 <app-header class="w-full header"></app-header>
 <div class="container space-header p-2">
   <div class="row">
-    <div class="profile min-wh">
-
-      <p>profile works!</p>
+    <div class="profile w-full min-wh">
+      <form class="profile__form col-md-6 col-12 mx-auto flex column between" [formGroup]="formAccount" (ngSubmit)="onSubmit(isUpdate)">
+        <p class="p-bold mt-3">My account</p>
+        <div>
+          <app-input label="Name" placeholder="Camilo Navar" formControlName="name"></app-input>
+          <app-input label="Email address" placeholder="pablo@noreal.com" formControlName="email"></app-input>
+          <app-input label="Password" placeholder="**********" formControlName="password" type="password"></app-input>
+        </div>
+        <button mat-button type="submit" class="button bg-secondary" *ngIf="isUpdate">Edit</button>
+        <button mat-button type="submit" class="button bg-primary" *ngIf="!isUpdate">Save</button>
+      </form>
     </div>
   </div>
 </div>

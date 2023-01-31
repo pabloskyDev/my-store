@@ -9,6 +9,8 @@ import { HeaderComponent } from '../components/header/header.component';
 import { ProductComponent } from './product-list/product/product.component';
 import { SwiperModule } from 'swiper/angular';
 import { ImgComponent } from '../components/img/img.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { InputComponent } from '../components/input/input.component';
 
 
 @NgModule({
@@ -23,7 +25,9 @@ import { ImgComponent } from '../components/img/img.component';
     HeaderComponent,
     ProductComponent,
     SwiperModule,
-    ImgComponent
+    ImgComponent,
+    ReactiveFormsModule,
+    InputComponent
   ]
 })
 export class PagesModule { }
