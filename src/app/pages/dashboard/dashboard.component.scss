@@ -1,0 +1,47 @@
+.products {
+  &__search {
+    .input-icon {
+      button {
+        position: absolute;
+        border: 0;
+        border-radius: 10px;
+        padding: 10px 10px 8px 10px;
+        min-width: 40px;
+        background-color: var(--secondary);
+        .icon {
+          background-color: var(--secondary);
+        }
+      }
+      input {
+        padding-left: 45px;
+      }
+    }
+  }
+  &__links {
+    overflow-x: scroll;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x proximity;
+    .slider {
+      display: flex;
+      justify-content: start;
+      gap: 10px;
+      li {
+        a {
+          display: inline-block;
+          padding: 10px;
+          color: var(--secondary);
+          text-decoration: none;
+          border-radius: 10px;
+          border: 1px solid var(--white);
+          &:hover, &:active {
+            border: 1px solid var(--primary);
+            color: var(--primary);
+          }
+        }
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
