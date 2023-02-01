@@ -56,6 +56,7 @@ export class ProductListComponent implements OnInit {
     this.showProductDetail = !this.showProductDetail;
   }
 
+  // TODO Pass this alert to other parts
   onShowDetail(id: string) {
     this.statusDetail = 'loading';
     this.productsService
