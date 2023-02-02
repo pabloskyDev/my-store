@@ -13,18 +13,7 @@ import { Product } from '../../../models/product.model';
 })
 export class ProductComponent {
 
-  // Permite inicializar componente
-  @Input() product: Product = {
-    id: '',
-    title: '',
-    price: 0,
-    images: [],
-    category: {
-      id: '',
-      name: ''
-    },
-    description: ''
-  }
+  @Input() product!: Product;
   @Output() addedProduct = new EventEmitter<Product>();
   @Output() showProduct = new EventEmitter<string>();
 

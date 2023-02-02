@@ -1,7 +1,10 @@
-<app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
-<h2> {{ product.price | currency:'COP' }} </h2>
-<p> {{ product.title }} </p>
-<p *ngIf="product.taxes"> Valor IVA {{ product.taxes | currency:'COP' }} </p>
-<p> {{ product.description }} </p> <!-- appHighlight -->
-<button (click)="onShowDetail()">Ver detalle</button>
-<button (click)="onAddToCart()">Add cart</button>
+<div class="p-1">
+  <app-img *ngIf="product.images.length > 0" [img]="product.images[0]"></app-img>
+  <h2> {{ product.price | currency:'COP' }} </h2>
+  <p> {{ product.title }} </p>
+  <!-- <p *ngIf="product.taxes"> Valor IVA {{ product.taxes | currency:'COP' }} </p> -->
+  <!-- <p> {{ product.description }} </p> -->
+  <button (click)="onShowDetail()">Ver detalle</button>
+  <button (click)="onAddToCart()">Add cart</button>
+</div>
+
