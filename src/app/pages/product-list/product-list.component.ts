@@ -19,17 +19,7 @@ export class ProductListComponent implements OnInit {
   total = 0;
   products: Product[] = []
   showProductDetail = false;
-  productChosen: Product = {
-    id: '',
-    price: 0,
-    images: [],
-    title: '',
-    category: {
-      id: '',
-      name: '',
-    },
-    description: ''
-  }
+  productChosen!: Product;
   limit = 10;
   offset = 0;
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';

@@ -2,15 +2,14 @@
 
 <!-- <button (click)="onShowDetail('1256')">Detalle no found</button> -->
 
-<div class="products--grid">
-  <app-product
-    [product]="product"
-    *ngFor="let product of products"
-    (addedProduct)="onAddToShoppingCart($event)"
-    (showProduct)="onShowDetail($event)"
-  ></app-product>
-  <button (click)="loadMore()">load more</button>
+<div class="row">
+  <app-product class="col-6"
+    [product]="product" *ngFor="let product of products"
+    (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)">
+  </app-product>
+  <!-- <button (click)="loadMore()">load more</button> -->
 </div>
+
 <div class="product-detail" [class.active]="showProductDetail">
   {{ statusDetail }}
   <div *ngIf="productChosen">
