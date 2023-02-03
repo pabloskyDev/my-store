@@ -3,12 +3,13 @@
 <!-- <button (click)="onShowDetail('1256')">Detalle no found</button> -->
 
 <div class="row">
-  <app-product class="col-6"
-    [product]="product" *ngFor="let product of products"
+  <app-product class="col-6 col-sm-3 col-md-3"
+    [product]="product" *ngFor="let product of products | paginate: {itemsPerPage: 12, currentPage: p}"
     (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)">
   </app-product>
-  <!-- <button (click)="loadMore()">load more</button> -->
+  <button (click)="getProducts()">load more</button>
 </div>
+<pagination-controls (pageChange)="p = $event" class=" p-2 text center"></pagination-controls>
 
 <div class="product-detail" [class.active]="showProductDetail">
   {{ statusDetail }}

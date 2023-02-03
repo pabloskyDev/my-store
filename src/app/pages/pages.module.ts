@@ -11,6 +11,7 @@ import { SwiperModule } from 'swiper/angular';
 import { ImgComponent } from '../components/img/img.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../components/input/input.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { InputComponent } from '../components/input/input.component';
     SwiperModule,
     ImgComponent,
     ReactiveFormsModule,
-    InputComponent
+    InputComponent,
+    NgxPaginationModule
   ]
 })
 export class PagesModule { }

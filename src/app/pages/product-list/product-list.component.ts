@@ -24,6 +24,8 @@ export class ProductListComponent implements OnInit {
   offset = 0;
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
+  p!: any;
+
   constructor(
     // Inyección de dependencias
     private storeService: StoreService,
@@ -33,7 +35,7 @@ export class ProductListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.loadMore();
+    this.getProducts();
   }
 
   onAddToShoppingCart(product: Product){
@@ -128,7 +130,27 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  loadMore() {
+  getProducts() {
+    this.productsService
+    .getProductsByPage(this.limit, this.offset)
+    .subscribe({
+      next: (data) => {
+        console.log(data);
+        this.products = [...this.products, ...data];
+        this.offset += this.limit;
+      },
+      error: (errorMsg) => {
+        Swal.fire({
+          title: '¡Error!',
+          text: errorMsg,
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      }
+    });
+  }
+
+  /*loadMore() {
     this.productsService
     .getProductsByPage(this.limit, this.offset)
     .subscribe({
@@ -145,5 +167,5 @@ export class ProductListComponent implements OnInit {
         });
       }
     });
-  }
+  }*/
 }
