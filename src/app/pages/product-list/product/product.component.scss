@@ -1,3 +1,23 @@
-p, h2 {
-  margin: 0px;
+.product {
+  &__img {
+    cursor: pointer;
+  }
+  &__info {
+    .price {
+      padding: 10px 0;
+      h2 {
+        color: var(--light-black);
+        font-weight: bold;
+      }
+      p {
+        font-size: 14px;
+        color: var(--grey);
+      }
+    }
+    button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+  }
 }
