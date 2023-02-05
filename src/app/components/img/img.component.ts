@@ -42,7 +42,7 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
 
   ngOnInit(): void {
     // Corre antes del render
-    // Se pueden correr cosas asincronas, aqui se espera la respuesta del servidor
+    // Se pueden correr cosas asíncronas, aquí se espera la respuesta del servidor
     // Solo se corre una vez
     // console.log('ngOnInit', 'imgValue => ', this.img);
     // this.counterFn = window.setInterval(() => {
@@ -68,7 +68,6 @@ export class ImgComponent implements OnInit, OnChanges, AfterViewInit, OnDestroy
   }
 
   imgLoaded() {
-    // console.log('Log hijo');
     // De esta forma el componente está siendo escuchado por el padre.
     this.loaded.emit(this.img);
   }
