@@ -17,11 +17,6 @@ export class ProductComponent {
   @Output() addedProduct = new EventEmitter<Product>();
   @Output() showProduct = new EventEmitter<string>();
 
-  // Otra forma de inicializar clave-valor de objeto producto
-  // @Input('product') product!: Product;
-
-  constructor() { }
-
   onAddToCart() {
     this.addedProduct.emit(this.product);
   }

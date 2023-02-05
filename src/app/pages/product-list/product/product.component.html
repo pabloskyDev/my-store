@@ -2,11 +2,12 @@
   <app-img *ngIf="product.images.length > 0" [img]="product.images[0]" class="product__img" (click)="onShowDetail()"></app-img>
   <div class="product__info flex between">
     <div class="price">
-      <h2> {{ product.price | currency:'COP' }} </h2>
+      <h2> $ {{ product.price | currency:'COP' }} </h2>
       <p> {{ product.title }} </p>
-      <!-- <p *ngIf="product.taxes"> Valor IVA {{ product.taxes | currency:'COP' }} </p> -->
     </div>
-    <button (click)="onAddToCart()"><span></span></button>
+    <button (click)="onAddToCart()">
+      <img src="./../../../../assets/svg/bt_add_to_cart.svg" alt="Add to the car">
+    </button>
   </div>
 </div>
 

@@ -3,21 +3,38 @@
     cursor: pointer;
   }
   &__info {
+    height: 100px;
     .price {
       padding: 10px 0;
+      margin: auto 0;
       h2 {
         color: var(--light-black);
         font-weight: bold;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 8px;
       }
       p {
         font-size: 14px;
         color: var(--grey);
+        word-break: break-word;
       }
     }
     button {
-      width: 40px;
+      min-width: 40px;
       height: 40px;
       border-radius: 50%;
+      margin: auto 0;
+      padding: 0;
+      border: 0;
+      cursor: pointer;
+      img {
+        width: 100%;
+        border-radius: 50%;
+        &:hover, &:active {
+        }
+      }
     }
   }
 }
