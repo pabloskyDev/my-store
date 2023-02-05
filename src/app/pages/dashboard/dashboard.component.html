@@ -2,7 +2,7 @@
 <div class="container space-header p-1 min-wh products">
   <div class="row products__search">
     <form [formGroup]="searchProducts" (ngSubmit)="onSubmit()" class="">
-      <div class="input-icon">
+      <div class="input-icon flex between">
         <button type="submit"><i class="material-symbols-outlined icon">search</i></button>
         <input matInput type="text" formControlName="search" name="search" placeholder="Search product" class="input" autocomplete="off"/>
       </div>
@@ -10,7 +10,7 @@
   </div>
   <div class="row pt-2 pb-2 products__links">
     <ul class="slider">
-      <li><a href="">All</a></li>
+      <li><a href="/" class="active">All</a></li>
       <li><a href="">Clothes</a></li>
       <li><a href="">Electronics</a></li>
       <li><a href="">Furniture</a></li>
