@@ -1,7 +1,4 @@
 <!-- <button (click)="createNewProduct()">create</button> -->
-
-<!-- <button (click)="onShowDetail('1256')">Detalle no found</button> -->
-
 <div class="row">
   <app-product class="col-6 col-sm-3 col-md-3"
     [product]="product" *ngFor="let product of products | paginate: {itemsPerPage: 12, currentPage: p}"

@@ -15,6 +15,7 @@ import Swal from 'sweetalert2'
 })
 export class ProductListComponent implements OnInit {
 
+  // Todo pass all this component to dashboard
   myShoppingCart: Product[] = [];
   total = 0;
   products: Product[] = []
@@ -39,8 +40,7 @@ export class ProductListComponent implements OnInit {
   }
 
   onAddToShoppingCart(product: Product){
-    this.storeService
-    .addProduct(product);
+    this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
   }
 
@@ -149,23 +149,4 @@ export class ProductListComponent implements OnInit {
       }
     });
   }
-
-  /*loadMore() {
-    this.productsService
-    .getProductsByPage(this.limit, this.offset)
-    .subscribe({
-      next: (data) => {
-        this.products = [...this.products, ...data];
-        this.offset += this.limit;
-      },
-      error: (errorMsg) => {
-        Swal.fire({
-          title: '¡Error!',
-          text: errorMsg,
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
-      }
-    });
-  }*/
 }
