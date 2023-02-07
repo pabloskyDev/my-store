@@ -1,14 +1,14 @@
-<!-- <button (click)="createNewProduct()">create</button> -->
-<div class="row">
+<!-- <div class="row">
   <app-product class="col-6 col-sm-3 col-md-3"
-    [product]="product" *ngFor="let product of products | paginate: {itemsPerPage: 12, currentPage: p}"
+    [product]="product" *ngFor="let product of products | paginate: {itemsPerPage: 12, currentPage: page}"
     (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)">
   </app-product>
   <button (click)="getProducts()">load more</button>
 </div>
-<pagination-controls (pageChange)="p = $event" class=" p-2 text center"></pagination-controls>
+<pagination-controls (pageChange)="page = $event" class=" p-2 text center"></pagination-controls> -->
 
-<div class="product-detail" [class.active]="showProductDetail">
+<!-- Todo create component to detail product -->
+<!-- <div class="product-detail" [class.active]="showProductDetail">
   {{ statusDetail }}
   <div *ngIf="productChosen">
     <button (click)="toggleProductDetail()">Close</button>
@@ -25,4 +25,4 @@
     <button (click)="updateProduct()">editar</button>
     <button (click)="deleteProduct()">delete</button>
   </div>
-</div>
+</div> -->

@@ -16,7 +16,6 @@ import Swal from 'sweetalert2'
 export class ProductListComponent implements OnInit {
 
   // Todo pass all this component to dashboard
-  myShoppingCart: Product[] = [];
   total = 0;
   products: Product[] = []
   showProductDetail = false;
@@ -25,34 +24,47 @@ export class ProductListComponent implements OnInit {
   offset = 0;
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
 
-  p!: any;
+  page!: any;
 
   constructor(
     // Inyección de dependencias
     private storeService: StoreService,
     private productsService: ProductsService
-  ) {
-    // this.myShoppingCart = this.storeService.getShoppingCart();
-  }
+  ) {}
 
   ngOnInit(): void {
-    this.getProducts();
+    // this.getProducts();
   }
 
-  onAddToShoppingCart(product: Product){
+  /*getProducts() {
+    this.productsService
+    .getProductsByPage(this.limit, this.offset)
+    .subscribe({
+      next: (data) => {
+        console.log(data);
+        this.products = [...this.products, ...data];
+        this.offset += this.limit;
+      },
+      error: (errorMsg) => {
+        Swal.fire({
+          title: '¡Error!',
+          text: errorMsg,
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      }
+    });*/
+
+  /*onAddToShoppingCart(product: Product){
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
-  }
-
-  toggleProductDetail() {
-    this.showProductDetail = !this.showProductDetail;
-  }
+    console.log(this.total);
+  }*/
 
   // TODO Pass this alert to other parts
-  onShowDetail(id: string) {
+  /*onShowDetail(id: string) {
     this.statusDetail = 'loading';
-    this.productsService
-    .getProduct(id)
+    this.productsService.getProduct(id)
     .subscribe({
       next: (data) => {
         this.toggleProductDetail();
@@ -72,6 +84,11 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  toggleProductDetail() {
+    this.showProductDetail = !this.showProductDetail;
+  }*/
+
+  // Todo create component CRUD Products
   readAndUpdate(id: string) {
     // Respuestas que dependen unas de otras
     this.productsService.getProduct(id)
@@ -79,7 +96,7 @@ export class ProductListComponent implements OnInit {
       switchMap((product) => this.productsService.update(product.id, {title: 'change'}))
     )
     .subscribe(data => {
-      console.log(data);
+      // console.log(data);
     })
 
     // Respuestas que no tienen dependencia
@@ -90,6 +107,7 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  // Todo pass this function to dashboard
   createNewProduct() {
     const product: CreateProductDTO = {
       title: 'Nuevo producto',
@@ -105,6 +123,7 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  // Todo pass these functions to detail product
   updateProduct() {
     const changes: UpdateProductDTO = {
       title: 'Changes tittle',
@@ -126,27 +145,7 @@ export class ProductListComponent implements OnInit {
     .subscribe(() => {
       const productIndex = this.products.findIndex(item => item.id === this.productChosen.id);
       this.products.splice(productIndex, 1);
-      this.showProductDetail = false;
-    });
-  }
-
-  getProducts() {
-    this.productsService
-    .getProductsByPage(this.limit, this.offset)
-    .subscribe({
-      next: (data) => {
-        console.log(data);
-        this.products = [...this.products, ...data];
-        this.offset += this.limit;
-      },
-      error: (errorMsg) => {
-        Swal.fire({
-          title: '¡Error!',
-          text: errorMsg,
-          icon: 'error',
-          confirmButtonText: 'Ok',
-        });
-      }
+      // this.showProductDetail = false;
     });
   }
 }
