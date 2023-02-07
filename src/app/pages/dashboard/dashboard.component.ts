@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { Product } from 'src/app/models/product.model';
+import { CreateProductDTO, Product } from 'src/app/models/product.model';
 import { FilesService } from 'src/app/services/files.service';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoreService } from 'src/app/services/store.service';
@@ -25,7 +25,7 @@ export class DashboardComponent implements OnInit {
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   page!: any;
 
-  // Todo all this code of place
+  // Todo change all this code of place
   // imgRta = '';
   // imgParent = '';
   // showImg = true;
@@ -46,7 +46,6 @@ export class DashboardComponent implements OnInit {
     .getProductsByPage(this.limit, this.offset)
     .subscribe({
       next: (data) => {
-        // console.log(data);
         this.products = [...this.products, ...data];
         this.offset += this.limit;
       },
@@ -64,7 +63,6 @@ export class DashboardComponent implements OnInit {
   onAddToShoppingCart(product: Product){
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
-    // console.log(this.total);
   }
 
   onShowDetail(id: string) {
@@ -90,6 +88,22 @@ export class DashboardComponent implements OnInit {
 
   toggleProductDetail() {
     this.showProductDetail = !this.showProductDetail;
+  }
+
+  // Todo: Create button to execute this function
+  createNewProduct() {
+    const product: CreateProductDTO = {
+      title: 'Nuevo producto',
+      description: 'Ejemplo',
+      images: [`https://placeimg.com/640/480/any?random=$%7BMath.random()%7D`],
+      price: 1000,
+      categoryId: 1
+    }
+    this.productsService
+    .create(product)
+    .subscribe(data => {
+      this.products.unshift(data);
+    })
   }
 
   onSubmit() {
