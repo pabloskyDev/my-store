@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { Product } from 'src/app/models/product.model';
 import { FilesService } from 'src/app/services/files.service';
+import { ProductsService } from 'src/app/services/products.service';
+import { StoreService } from 'src/app/services/store.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,17 +16,80 @@ export class DashboardComponent implements OnInit {
   searchProducts = this.fb.nonNullable.group({
     search: ['']
   });
+  total = 0;
+  products: Product[] = []
+  showProductDetail = false;
+  productChosen!: Product;
+  limit = 10;
+  offset = 0;
+  statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
+  page!: any;
 
-  imgRta = '';
-  imgParent = '';
-  showImg = true;
+  // Todo all this code of place
+  // imgRta = '';
+  // imgParent = '';
+  // showImg = true;
 
   constructor(
-    private filesService: FilesService,
-    private fb: FormBuilder
+    // private filesService: FilesService,
+    private fb: FormBuilder,
+    private storeService: StoreService,
+    private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.productsService
+    .getProductsByPage(this.limit, this.offset)
+    .subscribe({
+      next: (data) => {
+        // console.log(data);
+        this.products = [...this.products, ...data];
+        this.offset += this.limit;
+      },
+      error: (errorMsg) => {
+        Swal.fire({
+          title: '¡Error!',
+          text: errorMsg,
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      }
+    });
+  }
+
+  onAddToShoppingCart(product: Product){
+    this.storeService.addProduct(product);
+    this.total = this.storeService.getTotal();
+    // console.log(this.total);
+  }
+
+  onShowDetail(id: string) {
+    this.statusDetail = 'loading';
+    this.productsService.getProduct(id)
+    .subscribe({
+      next: (data) => {
+        this.toggleProductDetail();
+        this.productChosen = data;
+        this.statusDetail = 'success';
+      },
+      error: (errorMsg) => {
+        this.statusDetail = 'error';
+        Swal.fire({
+          title: 'Error!',
+          text: errorMsg,
+          icon: 'error',
+          confirmButtonText: 'Ok',
+        });
+      }
+    });
+  }
+
+  toggleProductDetail() {
+    this.showProductDetail = !this.showProductDetail;
   }
 
   onSubmit() {
@@ -34,8 +101,6 @@ export class DashboardComponent implements OnInit {
   }
 
   // Todo change the location of this codes
-  onLoaded(event: string) {}
-
   // toggleImg() {
   //   this.showImg = !this.showImg;
   // }
