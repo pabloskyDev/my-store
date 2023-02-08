@@ -24,7 +24,7 @@
     </ul>
   </div>
 
-  <div class="row">
+  <div class="row products__list">
     <app-product class="col-6 col-sm-3 col-md-3"
       [product]="product" *ngFor="let product of products | paginate: {itemsPerPage: 12, currentPage: page}"
       (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)">
@@ -33,5 +33,9 @@
   </div>
   <pagination-controls (pageChange)="page = $event" class=" p-2 text center"></pagination-controls>
 
+  <!-- *ngIf="showProductDetail" -->
+  <div class="row products__detail" [class.active]="showProductDetail">
+    <app-product-detail [product]="productChosen" [status]="statusDetail" (showDetail)="toggleProductDetail($event)"></app-product-detail>
+  </div>
 
 </div>

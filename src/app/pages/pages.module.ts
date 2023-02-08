@@ -12,6 +12,7 @@ import { ImgComponent } from '../components/img/img.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../components/input/input.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ProductDetailComponent } from './dashboard/product-detail/product-detail.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     ImgComponent,
     ReactiveFormsModule,
     InputComponent,
-    NgxPaginationModule
+    NgxPaginationModule,
+    ProductDetailComponent
   ]
 })
 export class PagesModule { }

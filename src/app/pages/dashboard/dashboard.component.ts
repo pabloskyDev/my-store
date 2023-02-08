@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   });
   total = 0;
   products: Product[] = []
+
   showProductDetail = false;
   productChosen!: Product;
   limit = 10;
@@ -70,9 +71,10 @@ export class DashboardComponent implements OnInit {
     this.productsService.getProduct(id)
     .subscribe({
       next: (data) => {
-        this.toggleProductDetail();
+        this.toggleProductDetail(true);
         this.productChosen = data;
         this.statusDetail = 'success';
+        // console.log(this.productChosen);
       },
       error: (errorMsg) => {
         this.statusDetail = 'error';
@@ -86,8 +88,8 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  toggleProductDetail() {
-    this.showProductDetail = !this.showProductDetail;
+  toggleProductDetail(show: any) {
+    this.showProductDetail = show;
   }
 
   addNewProduct() {
@@ -119,7 +121,7 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  // Todo change the location of this codes
+  // Todo change the location of this codes (Create new Product component)
   // toggleImg() {
   //   this.showImg = !this.showImg;
   // }
