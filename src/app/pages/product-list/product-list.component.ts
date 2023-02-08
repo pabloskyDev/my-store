@@ -89,7 +89,7 @@ export class ProductListComponent implements OnInit {
   }*/
 
   // Todo create component CRUD Products
-  readAndUpdate(id: string) {
+  /*readAndUpdate(id: string) {
     // Respuestas que dependen unas de otras
     this.productsService.getProduct(id)
     .pipe(
@@ -105,7 +105,7 @@ export class ProductListComponent implements OnInit {
       const read = response[0];
       const update = response[1];
     })
-  }
+  }*/
 
   // Todo pass this function to dashboard
   /*createNewProduct() {
@@ -124,7 +124,7 @@ export class ProductListComponent implements OnInit {
   }*/
 
   // Todo pass these functions to detail product
-  updateProduct() {
+  /*updateProduct() {
     const changes: UpdateProductDTO = {
       title: 'Changes tittle',
     }
@@ -147,5 +147,5 @@ export class ProductListComponent implements OnInit {
       this.products.splice(productIndex, 1);
       // this.showProductDetail = false;
     });
-  }
+  }*/
 }
