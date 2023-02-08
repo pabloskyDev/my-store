@@ -1,12 +1,17 @@
 <app-header class="header w-full"></app-header>
 <div class="container space-header p-1 min-wh products">
   <div class="row products__search">
-    <form [formGroup]="searchProducts" (ngSubmit)="onSubmit()" class="">
-      <div class="input-icon flex between">
-        <button type="submit"><i class="material-symbols-outlined icon">search</i></button>
-        <input matInput type="text" formControlName="search" name="search" placeholder="Search product" class="input" autocomplete="off"/>
-      </div>
-    </form>
+    <div class="col-10">
+      <form [formGroup]="searchProducts" (ngSubmit)="onSubmit()" class="">
+        <div class="input-icon flex between">
+          <button type="submit"><i class="material-symbols-outlined icon">search</i></button>
+          <input matInput type="text" formControlName="search" name="search" placeholder="Search product" class="input" autocomplete="off"/>
+        </div>
+      </form>
+    </div>
+    <div class="col-2 add_product flex-center">
+      <button type="button" (click)="addNewProduct()"><i class="material-symbols-outlined icon" aria-placeholder="Add new product">add_circle</i></button>
+    </div>
   </div>
   <div class="row pt-2 pb-2 products__links">
     <ul class="slider">

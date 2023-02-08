@@ -90,7 +90,12 @@ export class DashboardComponent implements OnInit {
     this.showProductDetail = !this.showProductDetail;
   }
 
-  // Todo: Create button to execute this function
+  addNewProduct() {
+    console.log('Product added!!');
+    // this.createNewProduct();
+  }
+  // Todo: Create component with form to create products
+
   createNewProduct() {
     const product: CreateProductDTO = {
       title: 'Nuevo producto',
