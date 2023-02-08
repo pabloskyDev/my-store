@@ -1,6 +1,6 @@
 <div class="show-mobile">
   <div class="flex between p-2 ">
-    <button (click)="toggleMenu()"><img src="./assets/svg/icon_menu.svg" alt="menu"></button>
+    <button (click)="toggleMenu()" class="cursor"><img src="./assets/svg/icon_menu.svg" alt="menu"></button>
     <a href="#"><img src="./assets/svg/logo_yard_sale.svg" alt="logo"></a>
     <a href=""><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>
   </div>
@@ -20,7 +20,7 @@
       </ul>
       <div class="navigation__auth border-top" *ngIf="showAccount">
         <ul>
-          <li><a class="p-bold">My orders</a></li>
+          <li><a class="p-bold cursor">My orders</a></li>
           <li><a class="p-bold" href="/profile">My account</a></li>
         </ul>
       </div>
@@ -28,7 +28,7 @@
         <a href="/auth" class="p-bold" *ngIf="!showAccount">Log in</a>
         <div class="logout mt-4" *ngIf="showAccount">
           <p class="p-text">{{ email }}</p>
-          <a class="p-bold pt-1" (click)="logout()">Sign out</a>
+          <a class="p-bold pt-1 cursor" (click)="logout()">Sign out</a>
         </div>
       </div>
     </div>

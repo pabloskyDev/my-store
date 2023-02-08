@@ -153,6 +153,9 @@ a {
 .border-top {
   border-top: 1px solid var(--light-grey);
 }
+.cursor {
+  cursor: pointer;
+}
 
 @media screen and (min-width: 640px){
   .min-wh {
