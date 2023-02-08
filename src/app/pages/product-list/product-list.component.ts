@@ -108,7 +108,7 @@ export class ProductListComponent implements OnInit {
   }
 
   // Todo pass this function to dashboard
-  createNewProduct() {
+  /*createNewProduct() {
     const product: CreateProductDTO = {
       title: 'Nuevo producto',
       description: 'Ejemplo',
@@ -121,7 +121,7 @@ export class ProductListComponent implements OnInit {
     .subscribe(data => {
       this.products.unshift(data);
     })
-  }
+  }*/
 
   // Todo pass these functions to detail product
   updateProduct() {
