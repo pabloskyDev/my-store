@@ -26,7 +26,7 @@ export class DashboardComponent implements OnInit {
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   page!: any;
 
-  // Todo change all this code of place
+  // Todo this is for Create product
   // imgRta = '';
   // imgParent = '';
   // showImg = true;

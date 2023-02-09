@@ -67,7 +67,7 @@
   }
   &__detail {
     position: fixed;
-    top: 0;
+    top: 60px;
     left: 0%;
     bottom: 0;
     right: 0;
@@ -85,6 +85,7 @@
 @media screen and (min-width: 780px) {
   .products {
     &__detail {
+      top: 73px;
       left: 50%;
       &.active{
         transform: translateX(0);
