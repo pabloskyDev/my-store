@@ -1,0 +1,46 @@
+.detail {
+  overflow-y: auto;
+  &__cancel {
+    background: transparent;
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: 5px;
+    button {
+      border: 0;
+      background: transparent;
+      color: var(--secondary);
+      cursor: pointer;
+      span {
+        background: transparent;
+      }
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+  &__content {
+    img {
+      width: 90%;
+      max-height: 170px;
+      margin: 0 auto;
+      border-bottom-left-radius: 16px;
+      border-bottom-right-radius: 16px;
+    }
+    .information {
+      .description {
+        font-size: 14px;
+        color: var(--grey);
+      }
+    }
+  }
+}
+@media screen and (min-width: 780px) {
+  .detail {
+    &__content {
+      .information .description {
+        font-size: 16px;
+      }
+    }
+  }
+}

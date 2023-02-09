@@ -1,17 +1,43 @@
-{{ status }}
-<div *ngIf="product">
-  <button (click)="toggleDetail()">Close</button>
-  <h1> {{ product.title }} </h1>
-  <swiper
-    [slidesPerView]="1"
-    [pagination]="{ clickable: true }"
-  >
-    <ng-template swiperSlide *ngFor="let image of product.images">
-      <img [src]="image" alt="">
-    </ng-template>
-  </swiper>
-  <p> {{ product.description }} </p>
-  <button (click)="updateProduct()">editar</button>
-  <button (click)="deleteProduct()">delete</button>
+<div class="container detail">
+  <div class="detail__cancel">
+    <button (click)="toggleDetail()"><span class="material-symbols-outlined">close</span></button>
+  </div>
+  <div class="detail__content">
+    <div *ngIf="product">
+      <swiper [slidesPerView]="1" [pagination]="{ clickable: true }">
+        <ng-template swiperSlide *ngFor="let image of product.images" class="flex center">
+          <img [src]="image" alt="Product detail" width="100%" height="90%" loading="lazy">
+        </ng-template>
+      </swiper>
+
+      <div class="row information p-2">
+        <div class="col-12">
+          <p class="p-bold pb-1"> {{ product.price | currency:'COP' }} </p>
+          <p class="p-text pb-2"> {{ product.title }} </p>
+          <p class="description"> {{ product.description }} </p>
+        </div>
+      </div>
+
+      <div class="row py-1 flex-center gap-1">
+        <div class="col-5">
+          <button (click)="deleteProduct()" class="button bg-primary">Delete</button>
+        </div>
+        <div class="col-5">
+          <button (click)="updateProduct()" class="button bg-secondary">Edit</button>
+        </div>
+      </div>
+
+      <div class="row p-2">
+        <div class="col-12">
+          <button class="button bg-primary">Add to the car</button>
+        </div>
+      </div>
+
+
+    </div>
+    <div *ngIf="!product">
+      <p>No se encuentra el producto seleccionado</p>
+    </div>
+  </div>
 </div>
 
