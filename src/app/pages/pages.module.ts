@@ -3,10 +3,9 @@ import { CommonModule } from '@angular/common';
 
 import { PagesRoutingModule } from './pages-routing.module';
 import { ProfileComponent } from './profile/profile.component';
-import { ProductListComponent } from './product-list/product-list.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeaderComponent } from '../components/header/header.component';
-import { ProductComponent } from './product-list/product/product.component';
+import { ProductComponent } from './dashboard/product/product.component';
 import { SwiperModule } from 'swiper/angular';
 import { ImgComponent } from '../components/img/img.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -18,7 +17,6 @@ import { ProductDetailComponent } from './dashboard/product-detail/product-detai
 @NgModule({
   declarations: [
     ProfileComponent,
-    ProductListComponent,
     DashboardComponent
   ],
   imports: [
