@@ -38,6 +38,12 @@
     }
   }
 }
+::ng-deep.swal2-styled.swal2-confirm {
+  background: var(--primary);
+  &:active {
+    border: 1px solid var(--primary);
+  }
+}
 @media screen and (min-width: 780px) {
   .detail {
     &__content {

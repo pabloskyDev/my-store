@@ -4,6 +4,7 @@ import { Product, UpdateProductDTO } from 'src/app/models/product.model';
 import { SwiperModule } from 'swiper/angular';
 import { ProductsService } from 'src/app/services/products.service';
 import { switchMap } from 'rxjs/operators'
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-detail',
@@ -46,14 +47,41 @@ export class ProductDetailComponent implements OnInit {
   }
 
   deleteProduct() {
-    const id = this.product.id;
+    Swal.fire({
+      title: '¿Estás seguro de eliminar este producto?',
+      // text: 'Luego no podrás recuperar este producto',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, eliminarlo',
+      cancelButtonText: 'No, mantenerlo'
+    }).then((result) => {
+
+      if (result.value) {
+        console.log( this.product.id);
+        Swal.fire(
+          '¡Eliminado!',
+          'Tu producto ha sido eliminado con éxito.',
+          'success'
+        )
+      }
+      /*else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your imaginary file is safe :)',
+          'error'
+        )
+      }*/
+    })
+
+    /*const id = this.product.id;
     this.productsService
     .delete(id)
     .subscribe(() => {
       const productIndex = this.products.findIndex(item => item.id === this.product.id);
       this.products.splice(productIndex, 1);
       // this.showProductDetail = false;
-    });
+    });*/
+
   }
 
   readAndUpdate(id: string) {
