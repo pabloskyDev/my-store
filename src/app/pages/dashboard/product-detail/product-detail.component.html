@@ -10,15 +10,15 @@
         </ng-template>
       </swiper>
 
-      <div class="row information p-2">
+      <div class="row information px-2 pt-2">
         <div class="col-12">
           <p class="p-bold pb-1"> {{ product.price | currency:'COP' }} </p>
-          <p class="p-text pb-2"> {{ product.title }} </p>
+          <p class="p-text pb-1"> {{ product.title }} </p>
           <p class="description"> {{ product.description }} </p>
         </div>
       </div>
 
-      <div class="row py-1 flex-center gap-1">
+      <div class="row pt-1 flex-center gap-1">
         <div class="col-5">
           <button (click)="deleteProduct()" class="button bg-primary">Delete</button>
         </div>
@@ -27,12 +27,11 @@
         </div>
       </div>
 
-      <div class="row p-2">
+      <div class="row p-1">
         <div class="col-12">
           <button class="button bg-primary">Add to the car</button>
         </div>
       </div>
-
 
     </div>
     <div *ngIf="!product">
