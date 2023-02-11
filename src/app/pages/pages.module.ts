@@ -12,12 +12,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../components/input/input.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductDetailComponent } from './dashboard/product-detail/product-detail.component';
+import { ProductFormComponent } from './dashboard/product-form/product-form.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
-    DashboardComponent
+    DashboardComponent,
+    ProductFormComponent
   ],
   imports: [
     CommonModule,
