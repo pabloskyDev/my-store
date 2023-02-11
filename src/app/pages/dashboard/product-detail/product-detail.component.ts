@@ -5,6 +5,7 @@ import { SwiperModule } from 'swiper/angular';
 import { ProductsService } from 'src/app/services/products.service';
 import { switchMap } from 'rxjs/operators'
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -22,7 +23,8 @@ export class ProductDetailComponent implements OnInit {
   products: Product[] = [];
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -46,7 +48,7 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
-  deleteProduct() {
+  delete() {
     Swal.fire({
       title: '¿Estás seguro de eliminar este producto?',
       // text: 'Luego no podrás recuperar este producto',
@@ -55,14 +57,10 @@ export class ProductDetailComponent implements OnInit {
       confirmButtonText: 'Sí, eliminarlo',
       cancelButtonText: 'No, mantenerlo'
     }).then((result) => {
-
       if (result.value) {
-        console.log( this.product.id);
-        Swal.fire(
-          '¡Eliminado!',
-          'Tu producto ha sido eliminado con éxito.',
-          'success'
-        )
+        if(this.product.id) {
+          this.deleteProduct(this.product.id);
+        }
       }
       /*else if (result.dismiss === Swal.DismissReason.cancel) {
         Swal.fire(
@@ -72,17 +70,26 @@ export class ProductDetailComponent implements OnInit {
         )
       }*/
     })
-
-    /*const id = this.product.id;
-    this.productsService
-    .delete(id)
-    .subscribe(() => {
-      const productIndex = this.products.findIndex(item => item.id === this.product.id);
-      this.products.splice(productIndex, 1);
-      // this.showProductDetail = false;
-    });*/
-
   }
+
+  deleteProduct(id: string) {
+    this.productsService.delete(id).subscribe({
+      next: (res) => {
+        Swal.fire(
+          '¡Eliminado!',
+          'Tu producto ha sido eliminado con éxito.',
+          'success')
+      },
+      error: (err) => {
+        this.router.navigate(['/']);
+        Swal.fire(
+          '¡Cancelado!',
+          'Tu producto no se pudo eliminar',
+          'error')
+      }
+    })
+  }
+
 
   readAndUpdate(id: string) {
     // Respuestas que dependen unas de otras
