@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { CreateProductDTO, Product } from 'src/app/models/product.model';
 import { FilesService } from 'src/app/services/files.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -11,7 +11,14 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class ProductFormComponent implements OnInit {
 
-  products: Product[] = []
+  formProduct = this.fb.nonNullable.group({
+    title: ['', Validators.required],
+    description: [''],
+    images: [[''], Validators.required],
+    price: [''],
+    categoryId: []
+  })
+  products: Product[] = [];
 
   // Todo this is for Create product
   // imgRta = '';
@@ -26,10 +33,13 @@ export class ProductFormComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Si llega al componente');
-    // this.createNewProduct();
   }
 
-  // Todo: Create component with form to create products
+  onSubmit() {
+    this.formProduct.markAllAsTouched();
+    if (this.formProduct.invalid) return
+    this.createNewProduct();
+  }
 
   createNewProduct() {
     const product: CreateProductDTO = {
