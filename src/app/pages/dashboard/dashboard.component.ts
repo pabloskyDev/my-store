@@ -74,7 +74,6 @@ export class DashboardComponent implements OnInit {
         this.toggleProductDetail(true);
         this.productChosen = data;
         this.statusDetail = 'success';
-        // console.log(this.productChosen);
       },
       error: (errorMsg) => {
         this.statusDetail = 'error';
@@ -88,8 +87,16 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  toggleProductDetail(show: any) {
+  toggleProductDetail(show: boolean) {
     this.showProductDetail = show;
+  }
+
+  deleteArrayProduct(id: string) {
+    if(id) {
+      let product = this.products.filter(product => product.id === id);
+      let index = this.products.indexOf(product[0])
+      this.products.splice(index, 1);
+    }
   }
 
   addNewProduct() {

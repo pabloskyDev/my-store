@@ -34,7 +34,7 @@
   <pagination-controls (pageChange)="page = $event" class=" p-2 text center"></pagination-controls>
 
   <div class="row products__detail" [class.active]="showProductDetail">
-    <app-product-detail [product]="productChosen" [status]="statusDetail" (showDetail)="toggleProductDetail($event)"></app-product-detail>
+    <app-product-detail [product]="productChosen" [status]="statusDetail" (showDetail)="toggleProductDetail($event)" (productId)="deleteArrayProduct($event)"></app-product-detail>
   </div>
 
 </div>

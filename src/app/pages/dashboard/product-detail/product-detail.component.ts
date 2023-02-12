@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 export class ProductDetailComponent implements OnInit {
 
   @Output() showDetail = new EventEmitter<boolean>();
+  @Output() productId = new EventEmitter<string>();
   @Input() product!: Product;
   @Input() status: 'loading' | 'success' | 'error' | 'init' = 'init';
 
@@ -75,17 +76,13 @@ export class ProductDetailComponent implements OnInit {
   deleteProduct(id: string) {
     this.productsService.delete(id).subscribe({
       next: (res) => {
-        Swal.fire(
-          '¡Eliminado!',
-          'Tu producto ha sido eliminado con éxito.',
-          'success')
+        Swal.fire( '¡Eliminado!',
+        'Tu producto ha sido eliminado con éxito.', 'success')
+        this.toggleDetail();
+        this.productId.emit(this.product.id);
       },
       error: (err) => {
-        this.router.navigate(['/']);
-        Swal.fire(
-          '¡Cancelado!',
-          'Tu producto no se pudo eliminar',
-          'error')
+        Swal.fire( '¡Cancelado!', 'Tu producto no se pudo eliminar', 'error')
       }
     })
   }
