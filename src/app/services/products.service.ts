@@ -37,13 +37,6 @@ export class ProductsService {
     );
   }
 
-  fetchReadAndUpdate(id: string, dto: UpdateProductDTO) {
-    return zip(
-      this.getProduct(id),
-      this.update(id, dto)
-    )
-  }
-
   getProduct(id: string) {
     return this.http.get<Product>(`${this.apiUrl}/${id}`)
     .pipe(

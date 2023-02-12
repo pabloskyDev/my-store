@@ -5,7 +5,6 @@ import { SwiperModule } from 'swiper/angular';
 import { ProductsService } from 'src/app/services/products.service';
 import { switchMap } from 'rxjs/operators'
 import Swal from 'sweetalert2';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -24,8 +23,7 @@ export class ProductDetailComponent implements OnInit {
   products: Product[] = [];
 
   constructor(
-    private productsService: ProductsService,
-    private router: Router
+    private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
@@ -86,24 +84,4 @@ export class ProductDetailComponent implements OnInit {
       }
     })
   }
-
-
-  readAndUpdate(id: string) {
-    // Respuestas que dependen unas de otras
-    this.productsService.getProduct(id)
-    .pipe(
-      switchMap((product) => this.productsService.update(product.id, {title: 'change'}))
-    )
-    .subscribe(data => {
-      // console.log(data);
-    })
-
-    // Respuestas que no tienen dependencia
-    this.productsService.fetchReadAndUpdate(id, {title: 'change'})
-    .subscribe(response => {
-      const read = response[0];
-      const update = response[1];
-    })
-  }
-
 }
