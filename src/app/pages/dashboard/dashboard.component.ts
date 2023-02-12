@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { CreateProductDTO, Product } from 'src/app/models/product.model';
-import { FilesService } from 'src/app/services/files.service';
+import { Router } from '@angular/router';
+import { Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoreService } from 'src/app/services/store.service';
 import Swal from 'sweetalert2';
@@ -26,16 +26,11 @@ export class DashboardComponent implements OnInit {
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   page!: any;
 
-  // Todo this is for Create product
-  // imgRta = '';
-  // imgParent = '';
-  // showImg = true;
-
   constructor(
-    // private filesService: FilesService,
     private fb: FormBuilder,
     private storeService: StoreService,
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -101,23 +96,7 @@ export class DashboardComponent implements OnInit {
 
   addNewProduct() {
     console.log('Product added!!');
-    // this.createNewProduct();
-  }
-  // Todo: Create component with form to create products
-
-  createNewProduct() {
-    const product: CreateProductDTO = {
-      title: 'Nuevo producto',
-      description: 'Ejemplo',
-      images: [`https://placeimg.com/640/480/any?random=$%7BMath.random()%7D`],
-      price: 1000,
-      categoryId: 1
-    }
-    this.productsService
-    .create(product)
-    .subscribe(data => {
-      this.products.unshift(data);
-    })
+    this.router.navigate(['/form']);
   }
 
   onSubmit() {
@@ -127,26 +106,4 @@ export class DashboardComponent implements OnInit {
       console.log(valSearch);
     }
   }
-
-  // Todo change the location of this codes (Create new Product component)
-  // toggleImg() {
-  //   this.showImg = !this.showImg;
-  // }
-
-  // downloadPdf() {
-  //   this.filesService.getFile('my.pdf', 'https://young-sands-07814.herokuapp.com/api/files/dummy.pdf', 'application/pdf')
-  //   .subscribe()
-  // }
-
-  // onUpload(event: Event) {
-  //   const element = event.target as HTMLInputElement;
-  //   const file = element.files?.item(0) as Blob;
-  //   if(file) {
-  //     this.filesService.uploadFile(file)
-  //     .subscribe(rta => {
-  //       this.imgRta = rta.location
-  //     })
-  //   }
-  // }
-
 }
