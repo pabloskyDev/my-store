@@ -1,16 +1,25 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { ProductFormComponent } from './dashboard/product-form/product-form.component';
 import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {
-    path: 'profile',
-    component: ProfileComponent
-  },
-  {
     path: '',
     component: DashboardComponent
+  },
+  {
+    path: 'form',
+    component: ProductFormComponent
+  },
+  {
+    path: ':id',
+    component: ProductFormComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
   }
 ];
 
