@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CreateProductDTO, Product } from 'src/app/models/product.model';
+import { Category, CreateProductDTO, Product } from 'src/app/models/product.model';
 import { FilesService } from 'src/app/services/files.service';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -15,14 +15,18 @@ export class ProductFormComponent implements OnInit {
     title: ['', Validators.required],
     description: [''],
     images: [[''], Validators.required],
-    price: [''],
-    categoryId: []
+    price: [0],
+    categoryId: [0]
   })
   products: Product[] = [];
+  categories: Category[] = [];
+  optionsImg: string[] = ['movie','game','book','fashion','furniture'];
+  imagesA: string[] = [];
+  imgRoute = 'https://api.lorem.space/image/';
+  paramsImg = '?w=640&amp;amp;amp;amp;h=480';
 
   // Todo this is for Create product
   // imgRta = '';
-  // imgParent = '';
   // showImg = true;
 
   constructor(
@@ -32,26 +36,33 @@ export class ProductFormComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('Si llega al componente');
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.productsService.getCategory().subscribe({
+      next: (res) => {
+        this.categories = res;
+      }
+    })
   }
 
   onSubmit() {
     this.formProduct.markAllAsTouched();
     if (this.formProduct.invalid) return
+
     this.createNewProduct();
   }
 
   createNewProduct() {
+    this.imagesA.push(`${this.imgRoute}${this.formProduct.getRawValue().images}${this.paramsImg}`);
+
     const product: CreateProductDTO = {
-      title: 'Nuevo producto',
-      description: 'Ejemplo',
-      images: [`https://placeimg.com/640/480/any?random=$%7BMath.random()%7D`],
-      price: 1000,
-      categoryId: 1
+      ...this.formProduct.getRawValue(),
+      images: this.imagesA
     }
-    this.productsService
-    .create(product)
-    .subscribe(data => {
+
+    this.productsService.create(product).subscribe(data => {
       this.products.unshift(data);
     })
   }
