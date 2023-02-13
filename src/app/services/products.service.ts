@@ -3,7 +3,7 @@ import { HttpClient, HttpParams, HttpErrorResponse, HttpStatusCode, HttpHeaders 
 import { retry, catchError, map } from 'rxjs/operators';
 import { throwError, zip } from 'rxjs';
 
-import { Product, CreateProductDTO, UpdateProductDTO } from './../models/product.model';
+import { Product, CreateProductDTO, UpdateProductDTO, Category } from './../models/product.model';
 import { checkTime } from '../interceptors/time.interceptor';
 import { environment } from './../../environments/environment';
 
@@ -12,8 +12,8 @@ import { environment } from './../../environments/environment';
 })
 export class ProductsService {
 
-  // private apiUrl = `${environment.API_URL}/api/products`;
-  private apiUrl = `https://young-sands-07814.herokuapp.com/api/products`;
+  private apiUrl = `${environment.API_URL}/api/products`;
+  // private apiUrl = `https://young-sands-07814.herokuapp.com/api/products`;
 
   constructor(
     private http: HttpClient
@@ -71,5 +71,9 @@ export class ProductsService {
 
   delete(id: string) {
     return this.http.delete<boolean>(`${this.apiUrl}/${id}`);
+  }
+
+  getCategory() {
+    return this.http.get<Category[]>(`${environment.API_URL}/api/categories`);
   }
 }
