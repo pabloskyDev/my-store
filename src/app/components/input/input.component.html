@@ -1,7 +1,7 @@
 <div *ngIf="type === 'text' || type === 'password' || type === 'number'">
-  <label for="email" class="d-block pb-1 mt-2">
+  <label [for]="control" class="d-block pb-1 mt-2">
     {{ label }}
-    <input matInput [type]="type" name="email" [formControl]="control" class="input" [ngClass]="(control.touched && control.errors && control.hasError('required')) ? 'inputError' : 'noInputError'" [placeholder]="placeholder" autocomplete="off">
+    <input matInput [type]="type" [name]="control" [formControl]="control" class="input" [ngClass]="(control.touched && control.errors && control.hasError('required')) ? 'inputError' : 'noInputError'" [placeholder]="placeholder" autocomplete="off">
     <div *ngIf="control.touched && control.errors && control.hasError('required')" class="error">
       {{ label }} is required
     </div>
