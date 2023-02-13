@@ -2,30 +2,31 @@
 <div class="container space-header p-2 min-h">
   <div class="row">
     <div class="col-md-10 mx-auto">
-      <div class="main-form w-full min-h">
-        <form [formGroup]="formProduct" (ngSubmit)="onSubmit()" class="flex column between gap-2">
-          <p class="p-bold">Create product</p>
-          <div>
-            <app-input label="title" placeholder="Title" formControlName="title"></app-input>
-            <app-input label="description" placeholder="Description" formControlName="description"></app-input>
+      <div class="main-form w-full">
+        <form [formGroup]="formProduct" (ngSubmit)="onSubmit()" class="flex column between">
+          <div class="flex column between gap-2">
+            <p class="p-bold">Create product</p>
+            <div>
+              <app-input label="title" placeholder="Title" formControlName="title"></app-input>
+              <app-input label="description" placeholder="Description" formControlName="description"></app-input>
 
-            <label for="images">
-              Type of image
-              <select matSelect formControlName="images" name="category" class="input" required>
-                <option value="album">--</option>
-                <option [value]="optionImg" *ngFor="let optionImg of optionsImg">{{ optionImg }}</option>
-              </select>
-            </label>
+              <label for="images">
+                Type of image
+                <select matSelect formControlName="images" name="category" class="input" required>
+                  <option value="album">--</option>
+                  <option [value]="optionImg" *ngFor="let optionImg of optionsImg">{{ optionImg }}</option>
+                </select>
+              </label>
 
-            <app-input type="number" label="price" placeholder="Price" formControlName="price"></app-input>
+              <app-input type="number" label="price" placeholder="Price" formControlName="price"></app-input>
 
-            <label for="category" class="d-block pb-1 mt-2">
-              Category
-              <select matSelect formControlName="categoryId" name="category" class="input">
-                <option value="0">--</option>
-                <option [value]="category.id" *ngFor="let category of categories">{{ category.name }}</option>
-              </select>
-            </label>
+              <label for="category" class="d-block pb-1 mt-2">
+                Category
+                <select matSelect formControlName="categoryId" name="category" class="input">
+                  <option [value]="category.id" *ngFor="let category of categories">{{ category.name }}</option>
+                </select>
+              </label>
+            </div>
           </div>
           <button mat-button type="submit" class="button bg-primary">Create</button>
         </form>
