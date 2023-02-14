@@ -18,6 +18,7 @@ export class DashboardComponent implements OnInit {
   });
   total = 0;
   products: Product[] = []
+  product!: Product;
 
   showProductDetail = false;
   productChosen!: Product;
@@ -30,11 +31,19 @@ export class DashboardComponent implements OnInit {
     private fb: FormBuilder,
     private storeService: StoreService,
     private productsService: ProductsService,
-    private router: Router
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
+    this.getProductAdded();
     this.getProducts();
+  }
+
+  getProductAdded() {
+    this.product = this.productsService.getNewProduct();
+    if(this.product) {
+      this.products.unshift(this.product);
+    }
   }
 
   getProducts() {
@@ -95,7 +104,6 @@ export class DashboardComponent implements OnInit {
   }
 
   addNewProduct() {
-    console.log('Product added!!');
     this.router.navigate(['/form']);
   }
 

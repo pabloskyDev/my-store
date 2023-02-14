@@ -18,7 +18,6 @@ export class ProductFormComponent implements OnInit {
     price: [0],
     categoryId: [0]
   })
-  products: Product[] = [];
   categories: Category[] = [];
   optionsImg: string[] = ['movie','game','book','fashion','furniture'];
   imagesA: string[] = [];
@@ -62,9 +61,7 @@ export class ProductFormComponent implements OnInit {
       images: this.imagesA
     }
 
-    this.productsService.create(product).subscribe(data => {
-      this.products.unshift(data);
-    })
+    this.productsService.create(product);
   }
 
   // Todo change the location of this codes (Create new Product component)

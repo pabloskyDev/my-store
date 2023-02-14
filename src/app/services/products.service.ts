@@ -6,6 +6,7 @@ import { throwError, zip } from 'rxjs';
 import { Product, CreateProductDTO, UpdateProductDTO, Category } from './../models/product.model';
 import { checkTime } from '../interceptors/time.interceptor';
 import { environment } from './../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +14,11 @@ import { environment } from './../../environments/environment';
 export class ProductsService {
 
   private apiUrl = `${environment.API_URL}/api/products`;
-  // private apiUrl = `https://young-sands-07814.herokuapp.com/api/products`;
+  product!: Product;
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   getAllProducts(limit?: number, offset?: number) {
@@ -62,7 +64,12 @@ export class ProductsService {
   }
 
   create(dto: CreateProductDTO) {
-    return this.http.post<Product>(`${this.apiUrl}`, dto);
+    return this.http.post<Product>(`${this.apiUrl}`, dto).subscribe(data => {
+      this.product = data;
+      if(this.product) {
+        this.router.navigate(['']);
+      }
+    })
   }
 
   update(id: string, dto: UpdateProductDTO) {
@@ -75,5 +82,9 @@ export class ProductsService {
 
   getCategory() {
     return this.http.get<Category[]>(`${environment.API_URL}/api/categories`);
+  }
+
+  getNewProduct() {
+    return this.product;
   }
 }
