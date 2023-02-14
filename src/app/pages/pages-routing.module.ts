@@ -14,7 +14,7 @@ const routes: Routes = [
     component: ProductFormComponent
   },
   {
-    path: ':id',
+    path: 'form/:id',
     component: ProductFormComponent
   },
   {
