@@ -7,3 +7,22 @@
     font-weight: 700;
   }
 }
+
+.cancel {
+  background: transparent;
+  z-index: 2;
+  top: 5px;
+  right: 5px;
+  button {
+    border: 0;
+    background: transparent;
+    color: var(--secondary);
+    cursor: pointer;
+    span {
+      background: transparent;
+    }
+    &:hover {
+      color: var(--primary);
+    }
+  }
+}

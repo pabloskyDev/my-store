@@ -5,7 +5,12 @@
       <div class="main-form w-full">
         <form [formGroup]="formProduct" (ngSubmit)="onSubmit()" class="flex column between">
           <div class="flex column between gap-2">
-            <p class="p-bold">Create product</p>
+            <div class="flex between">
+              <p class="p-bold">Create product</p>
+              <div class="cancel">
+                <button (click)="goHome()"><span class="material-symbols-outlined">close</span></button>
+              </div>
+            </div>
             <div>
               <app-input label="title" placeholder="Title" formControlName="title"></app-input>
               <app-input label="description" placeholder="Description" formControlName="description"></app-input>

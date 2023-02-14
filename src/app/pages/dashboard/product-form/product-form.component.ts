@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Category, CreateProductDTO, Product } from 'src/app/models/product.model';
 import { FilesService } from 'src/app/services/files.service';
 import { ProductsService } from 'src/app/services/products.service';
@@ -31,7 +32,8 @@ export class ProductFormComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private productsService: ProductsService,
-    private filesService: FilesService
+    private filesService: FilesService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -50,18 +52,21 @@ export class ProductFormComponent implements OnInit {
     this.formProduct.markAllAsTouched();
     if (this.formProduct.invalid) return
 
-    this.createNewProduct();
+    this.createProduct();
   }
 
-  createNewProduct() {
+  createProduct() {
     this.imagesA.push(`${this.imgRoute}${this.formProduct.getRawValue().images}${this.paramsImg}`);
 
     const product: CreateProductDTO = {
       ...this.formProduct.getRawValue(),
       images: this.imagesA
     }
-
     this.productsService.create(product);
+  }
+
+  goHome() {
+    this.router.navigate(['']);
   }
 
   // Todo change the location of this codes (Create new Product component)
