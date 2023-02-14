@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Product, UpdateProductDTO } from 'src/app/models/product.model';
 import { SwiperModule } from 'swiper/angular';
 import { ProductsService } from 'src/app/services/products.service';
-import { switchMap } from 'rxjs/operators'
 import Swal from 'sweetalert2';
 
 @Component({
@@ -50,7 +49,6 @@ export class ProductDetailComponent implements OnInit {
   delete() {
     Swal.fire({
       title: '¿Estás seguro de eliminar este producto?',
-      // text: 'Luego no podrás recuperar este producto',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Sí, eliminarlo',
@@ -61,25 +59,18 @@ export class ProductDetailComponent implements OnInit {
           this.deleteProduct(this.product.id);
         }
       }
-      /*else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire(
-          'Cancelled',
-          'Your imaginary file is safe :)',
-          'error'
-        )
-      }*/
     })
   }
 
   deleteProduct(id: string) {
     this.productsService.delete(id).subscribe({
-      next: (res) => {
+      next: () => {
         Swal.fire( '¡Eliminado!',
         'Tu producto ha sido eliminado con éxito.', 'success')
         this.toggleDetail();
         this.productId.emit(this.product.id);
       },
-      error: (err) => {
+      error: () => {
         Swal.fire( '¡Cancelado!', 'Tu producto no se pudo eliminar', 'error')
       }
     })
