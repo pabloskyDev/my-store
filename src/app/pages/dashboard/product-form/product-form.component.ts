@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Category, CreateProductDTO, Product } from 'src/app/models/product.model';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Category, CreateProductDTO, Product, UpdateProductDTO } from 'src/app/models/product.model';
 import { FilesService } from 'src/app/services/files.service';
 import { ProductsService } from 'src/app/services/products.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-product-form',
@@ -25,6 +26,10 @@ export class ProductFormComponent implements OnInit {
   imgRoute = 'https://api.lorem.space/image/';
   paramsImg = '?w=640&amp;amp;amp;amp;h=480';
 
+  // Edit
+  product!: Product;
+  nameTitle!: string;
+
   // Todo this is for Create product
   // imgRta = '';
   // showImg = true;
@@ -33,17 +38,43 @@ export class ProductFormComponent implements OnInit {
     private fb: FormBuilder,
     private productsService: ProductsService,
     private filesService: FilesService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
+    this.getParams();
     this.getCategories();
+  }
+
+  getParams() {
+    this.route.params.subscribe((params) => {
+      if(params['id']) {
+        this.findProduct(params['id']);
+        this.nameTitle = 'Edit';
+      }else {
+        this.nameTitle = 'Create';
+      }
+    })
   }
 
   getCategories() {
     this.productsService.getCategory().subscribe({
       next: (res) => {
         this.categories = res;
+      }
+    })
+  }
+
+  findProduct(id: string) {
+    this.productsService.getProduct(id).subscribe({
+      next: (res) => {
+        console.log(res);
+      },
+      error: () => {
+        Swal.fire( '¡Cancelado!', 'Tu producto no se pudo encontrar', 'error').then(() => {
+          this.goHome();
+        })
       }
     })
   }
@@ -63,6 +94,19 @@ export class ProductFormComponent implements OnInit {
       images: this.imagesA
     }
     this.productsService.create(product);
+  }
+
+  updateProduct() {
+    const changes: UpdateProductDTO = {
+      title: 'Changes tittle',
+    }
+    const id = this.product.id;
+    this.productsService.update(id, changes);
+    // .subscribe(data => {
+    //   const productIndex = this.products.findIndex(item => item.id === this.product.id);
+    //   this.products[productIndex] = data;
+    //   this.product = data;
+    // })
   }
 
   goHome() {

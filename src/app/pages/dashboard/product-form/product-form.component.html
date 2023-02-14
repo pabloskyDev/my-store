@@ -6,7 +6,7 @@
         <form [formGroup]="formProduct" (ngSubmit)="onSubmit()" class="flex column between">
           <div class="flex column between gap-2">
             <div class="flex between">
-              <p class="p-bold">Create product</p>
+              <p class="p-bold">{{ nameTitle }} product</p>
               <div class="cancel">
                 <button (click)="goHome()"><span class="material-symbols-outlined">close</span></button>
               </div>
@@ -33,7 +33,7 @@
               </label>
             </div>
           </div>
-          <button mat-button type="submit" class="button bg-primary">Create</button>
+          <button mat-button type="submit" class="button bg-primary">{{ nameTitle }}</button>
         </form>
       </div>
     </div>

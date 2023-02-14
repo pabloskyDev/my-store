@@ -4,6 +4,7 @@ import { Product, UpdateProductDTO } from 'src/app/models/product.model';
 import { SwiperModule } from 'swiper/angular';
 import { ProductsService } from 'src/app/services/products.service';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-detail',
@@ -22,7 +23,8 @@ export class ProductDetailComponent implements OnInit {
   products: Product[] = [];
 
   constructor(
-    private productsService: ProductsService
+    private productsService: ProductsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -32,18 +34,8 @@ export class ProductDetailComponent implements OnInit {
     this.showDetail.emit(false);
   }
 
-  updateProduct() {
-    const changes: UpdateProductDTO = {
-      title: 'Changes tittle',
-    }
-    const id = this.product.id;
-    this.productsService
-    .update(id, changes)
-    .subscribe(data => {
-      const productIndex = this.products.findIndex(item => item.id === this.product.id);
-      this.products[productIndex] = data;
-      this.product = data;
-    })
+  update() {
+    this.router.navigate(['form/', this.product.id]);
   }
 
   delete() {
