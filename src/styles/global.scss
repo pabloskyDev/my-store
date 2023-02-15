@@ -19,7 +19,10 @@
     justify-content: space-evenly;
   }
   &.end {
-    justify-content: end;
+    justify-content: flex-end;
+  }
+  &.start {
+    justify-content: flex-start;
   }
   &.column {
     flex-direction: column;
