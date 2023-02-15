@@ -16,7 +16,7 @@ export class ProductFormComponent implements OnInit {
   formProduct = this.fb.nonNullable.group({
     title: ['', Validators.required],
     description: [''],
-    images: [[''], Validators.required],
+    images: [{value: [''], disabled: true }, Validators.required],
     price: [0],
     categoryId: [0]
   })
@@ -29,6 +29,8 @@ export class ProductFormComponent implements OnInit {
   // Edit
   product!: Product;
   nameTitle!: string;
+  nameBtn!: string;
+  isUpdate = false;
 
   // Todo this is for Create product
   // imgRta = '';
@@ -52,8 +54,12 @@ export class ProductFormComponent implements OnInit {
       if(params['id']) {
         this.findProduct(params['id']);
         this.nameTitle = 'Edit';
+        this.nameBtn = 'Save';
+        this.isUpdate = true;
       }else {
         this.nameTitle = 'Create';
+        this.nameBtn = 'Create';
+        this.habilitateForm();
       }
     })
   }
@@ -69,7 +75,8 @@ export class ProductFormComponent implements OnInit {
   findProduct(id: string) {
     this.productsService.getProduct(id).subscribe({
       next: (res) => {
-        console.log(res);
+        this.product = res;
+        this.setFormValues(this.product);
       },
       error: () => {
         Swal.fire( '¡Cancelado!', 'Tu producto no se pudo encontrar', 'error').then(() => {
@@ -79,11 +86,29 @@ export class ProductFormComponent implements OnInit {
     })
   }
 
+  setFormValues(product: Product) {
+    this.formProduct.patchValue({
+      title: product.title,
+      description: product.description,
+      images: product.images,
+      price: product.price,
+      categoryId: parseInt(product.category.id)
+    })
+  }
+
+  habilitateForm() {
+    this.formProduct.controls.images.enable();
+  }
+
   onSubmit() {
     this.formProduct.markAllAsTouched();
     if (this.formProduct.invalid) return
 
-    this.createProduct();
+    if(this.isUpdate) {
+      this.updateProduct();
+    }else {
+      this.createProduct();
+    }
   }
 
   createProduct() {
@@ -97,16 +122,10 @@ export class ProductFormComponent implements OnInit {
   }
 
   updateProduct() {
-    const changes: UpdateProductDTO = {
-      title: 'Changes tittle',
-    }
+    const changes: UpdateProductDTO = this.formProduct.getRawValue();
     const id = this.product.id;
+
     this.productsService.update(id, changes);
-    // .subscribe(data => {
-    //   const productIndex = this.products.findIndex(item => item.id === this.product.id);
-    //   this.products[productIndex] = data;
-    //   this.product = data;
-    // })
   }
 
   goHome() {

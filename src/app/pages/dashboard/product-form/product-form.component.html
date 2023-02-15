@@ -13,9 +13,13 @@
             </div>
             <div>
               <app-input label="title" placeholder="Title" formControlName="title"></app-input>
-              <app-input label="description" placeholder="Description" formControlName="description"></app-input>
 
-              <label for="images">
+              <label for="description" class="d-block pb-1 mt-2">
+                Description
+                <textarea name="description" formControlName="description" class="input" autocomplete="off" rows="3"></textarea>
+              </label>
+
+              <label for="images" class="d-block pb-1 mt-2">
                 Type of image
                 <select matSelect formControlName="images" name="category" class="input" required>
                   <option value="album">--</option>
@@ -33,7 +37,7 @@
               </label>
             </div>
           </div>
-          <button mat-button type="submit" class="button bg-primary">{{ nameTitle }}</button>
+          <button mat-button type="submit" class="button bg-primary">{{ nameBtn }}</button>
         </form>
       </div>
     </div>
