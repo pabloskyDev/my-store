@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { ReversePipe } from './pipes/reverse.pipe';
 import { TimeAgoPipe } from './pipes/time-ago.pipe';
 import { VowelsNumberPipe } from './pipes/vowels-number.pipe';
-import { HighlightDirective } from './directives/highlight.directive';
 
 import { TimeInterceptor } from './interceptors/time.interceptor';
 import { TokenInterceptor } from './interceptors/token.interceptor';
@@ -18,8 +17,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AppComponent,
     ReversePipe,
     TimeAgoPipe,
-    VowelsNumberPipe,
-    HighlightDirective
+    VowelsNumberPipe
   ],
   imports: [
     BrowserModule,
