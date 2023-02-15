@@ -73,7 +73,16 @@ export class ProductsService {
   }
 
   update(id: string, dto: UpdateProductDTO) {
-    return this.http.put<Product>(`${this.apiUrl}/${id}`, dto);
+    return this.http.put<Product>(`${this.apiUrl}/${id}`, dto).subscribe({
+      next: (res) => {
+        if(res) {
+          this.router.navigate(['']);
+        }
+      },
+      error: (err) => {
+        console.log(err.error.message);
+      }
+    })
   }
 
   delete(id: string) {
