@@ -93,6 +93,12 @@ export class ProductsService {
     return this.http.get<Category[]>(`${environment.API_URL}/api/categories`);
   }
 
+  getProductsByCategory(id: number, limit: number, offset: number) {
+    return this.http.get<Product[]>(`${environment.API_URL}/api/categories/${id}/products`, {
+      params: {limit, offset}
+    })
+  }
+
   getNewProduct() {
     return this.product;
   }

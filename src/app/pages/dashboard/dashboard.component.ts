@@ -65,9 +65,24 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  getProductCategory(event: any) {
+    this.offset = 0;
+    const idCategory = event.target.id;
+    if(idCategory) {
+      this.productsService.getProductsByCategory(idCategory, this.limit, this.offset).subscribe({
+        next: (data) => {
+          console.log(data);
+          this.products =  data;
+          this.offset += this.limit;
+        }
+      })
+    }
+  }
+
   onAddToShoppingCart(product: Product){
-    this.storeService.addProduct(product);
-    this.total = this.storeService.getTotal();
+    console.log(product);
+    // this.storeService.addProduct(product);
+    // this.total = this.storeService.getTotal();
   }
 
   onShowDetail(id: string) {
