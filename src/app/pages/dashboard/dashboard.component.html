@@ -17,11 +17,7 @@
     <ul class="slider">
       <!-- (click)="getProducts()" class="active" -->
       <li><a>All</a></li>
-      <li><a id="1" (click)="getProductCategory($event)">Clothes</a></li>
-      <li><a id="2" (click)="getProductCategory($event)">Electronics</a></li>
-      <li><a id="3" (click)="getProductCategory($event)">Furniture</a></li>
-      <li><a id="4" (click)="getProductCategory($event)">Toys</a></li>
-      <li><a id="5" (click)="getProductCategory($event)">Others</a></li>
+      <li *ngFor="let category of categories"><a [id]="category.id" (click)="getProductCategory(category.id)" [ngClass]="idCategory === category.id ? 'active' : ''">{{ category.name }}</a></li>
     </ul>
   </div>
 
@@ -30,7 +26,8 @@
       [product]="product" *ngFor="let product of products | paginate: {itemsPerPage: 12, currentPage: page}"
       (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)">
     </app-product>
-    <button (click)="getProducts()">load more</button>
+    <button (click)="getProducts()" *ngIf="!idCategory">load more</button>
+    <button (click)="getProductCategory()" *ngIf="(idCategory && categoryLength >= 10)">load more</button>
   </div>
   <pagination-controls (pageChange)="page = $event" class=" p-2 text center"></pagination-controls>
 

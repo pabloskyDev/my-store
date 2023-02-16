@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Product } from 'src/app/models/product.model';
+import { Category, Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 import { StoreService } from 'src/app/services/store.service';
 import Swal from 'sweetalert2';
@@ -22,10 +22,13 @@ export class DashboardComponent implements OnInit {
 
   showProductDetail = false;
   productChosen!: Product;
-  limit = 10;
-  offset = 0;
+  limit = 10; limitC = 10;
+  offset = 0; offsetC = 0;
   statusDetail: 'loading' | 'success' | 'error' | 'init' = 'init';
   page!: any;
+  categoryLength = 0;
+  idCategory = '';
+  categories: Category[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -35,8 +38,18 @@ export class DashboardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCategories();
     this.getProductAdded();
     this.getProducts();
+  }
+
+  getCategories() {
+    this.productsService.getCategory().subscribe({
+      next: (res) => {
+        this.categories = res;
+        console.log(this.categories);
+      }
+    })
   }
 
   getProductAdded() {
@@ -47,8 +60,7 @@ export class DashboardComponent implements OnInit {
   }
 
   getProducts() {
-    this.productsService
-    .getProductsByPage(this.limit, this.offset)
+    this.productsService.getProductsByPage(this.limit, this.offset)
     .subscribe({
       next: (data) => {
         this.products = [...this.products, ...data];
@@ -65,15 +77,20 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getProductCategory(event: any) {
-    this.offset = 0;
-    const idCategory = event.target.id;
-    if(idCategory) {
-      this.productsService.getProductsByCategory(idCategory, this.limit, this.offset).subscribe({
+  getProductCategory(id?: any) {
+    if(id) {
+      this.offsetC = 0;
+      this.products = [];
+      this.idCategory = id;
+    }
+    if(this.idCategory) {
+      console.log(this.limitC + ' - ' + this.offsetC);
+      this.productsService.getProductsByCategory(this.idCategory, this.limitC, this.offsetC).subscribe({
         next: (data) => {
-          console.log(data);
-          this.products =  data;
-          this.offset += this.limit;
+          this.categoryLength = data.length;
+          console.log(this.categoryLength);
+          this.products = [...this.products, ...data];
+          this.offsetC += this.limitC;
         }
       })
     }
