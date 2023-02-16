@@ -15,8 +15,7 @@
   </div>
   <div class="row pt-2 pb-2 products__links">
     <ul class="slider">
-      <!-- (click)="getProducts()" class="active" -->
-      <li><a>All</a></li>
+      <li><a (click)="getProducts()" [ngClass]="activeDefault ? 'active' : ''">All</a></li>
       <li *ngFor="let category of categories"><a [id]="category.id" (click)="getProductCategory(category.id)" [ngClass]="idCategory === category.id ? 'active' : ''">{{ category.name }}</a></li>
     </ul>
   </div>

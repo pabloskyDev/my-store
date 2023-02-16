@@ -29,6 +29,7 @@ export class DashboardComponent implements OnInit {
   categoryLength = 0;
   idCategory = '';
   categories: Category[] = [];
+  activeDefault = false;
 
   constructor(
     private fb: FormBuilder,
@@ -47,7 +48,6 @@ export class DashboardComponent implements OnInit {
     this.productsService.getCategory().subscribe({
       next: (res) => {
         this.categories = res;
-        console.log(this.categories);
       }
     })
   }
@@ -60,6 +60,11 @@ export class DashboardComponent implements OnInit {
   }
 
   getProducts() {
+    this.activeDefault = true;
+    console.log(this.idCategory);
+    if(this.idCategory) {
+      this.idCategory = '';
+    }
     this.productsService.getProductsByPage(this.limit, this.offset)
     .subscribe({
       next: (data) => {
@@ -79,6 +84,7 @@ export class DashboardComponent implements OnInit {
 
   getProductCategory(id?: any) {
     if(id) {
+      this.activeDefault = false;
       this.offsetC = 0;
       this.products = [];
       this.idCategory = id;
@@ -88,7 +94,6 @@ export class DashboardComponent implements OnInit {
       this.productsService.getProductsByCategory(this.idCategory, this.limitC, this.offsetC).subscribe({
         next: (data) => {
           this.categoryLength = data.length;
-          console.log(this.categoryLength);
           this.products = [...this.products, ...data];
           this.offsetC += this.limitC;
         }
