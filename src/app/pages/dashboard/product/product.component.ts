@@ -16,9 +16,11 @@ export class ProductComponent {
   @Input() product!: Product;
   @Output() addedProduct = new EventEmitter<Product>();
   @Output() showProduct = new EventEmitter<string>();
+  activeProduct = false;
 
   onAddToCart() {
     this.addedProduct.emit(this.product);
+    this.activeProduct = !this.activeProduct;
   }
 
   onShowDetail() {
