@@ -54,6 +54,7 @@ export class HeaderComponent implements OnInit {
 
   filterCategory(id: string) {
     this.categorySelected.emit(id);
+    this.toggleMenu();
   }
 
   loggedIn() {
