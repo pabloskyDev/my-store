@@ -2,7 +2,7 @@
   <div class="flex between p-2 ">
     <button (click)="toggleMenu()" class="cursor"><img src="./assets/svg/icon_menu.svg" alt="menu"></button>
     <a href="#"><img src="./assets/svg/logo_yard_sale.svg" alt="logo"></a>
-    <a href=""><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>
+    <a href="#"><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>
   </div>
   <div class="side-menu p-2" [class.active]="activeMenu">
     <div class="side-menu__cancel">
@@ -52,12 +52,9 @@
       <div class="account">
         <button *ngIf="!profileValid; else elseBlock" (click)="login()">Login</button>
         <ng-template #elseBlock> {{ profile.email }} </ng-template>
-
       </div>
       <div>
-        <a href="">
-          <img src="./assets/svg/icon_shopping_cart.svg" alt="logo">
-        </a>
+        <a><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>
         <span class="counter"> {{ counter }} </span>
       </div>
     </div>
