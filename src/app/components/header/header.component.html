@@ -12,11 +12,7 @@
     <div class="navigation flex column between">
       <ul class="navigation__articles mt-3">
         <li><a class="p-bold" href="/">All</a></li>
-        <li><a class="p-bold" href="#">Clothes</a></li>
-        <li><a class="p-bold" href="#">Electronics</a></li>
-        <li><a class="p-bold" href="#">Furniture</a></li>
-        <li><a class="p-bold" href="#">Toys</a></li>
-        <li><a class="p-bold" href="#">Others</a></li>
+        <li><a *ngFor="let category of categories" class="p-bold" (click)="filterCategory(category.id)">{{ category.name }}</a></li>
       </ul>
       <div class="navigation__auth border-top" *ngIf="showAccount">
         <ul>
@@ -50,8 +46,7 @@
     </nav>
     <div class="info">
       <div class="account">
-        <button *ngIf="!profileValid; else elseBlock" (click)="login()">Login</button>
-        <ng-template #elseBlock> {{ profile.email }} </ng-template>
+        <!-- <p *ngIf="profileValid"> {{ profile.email }} </p> -->
       </div>
       <div>
         <a><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>

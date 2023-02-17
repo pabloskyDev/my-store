@@ -1,9 +1,11 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 import { User } from '../../models/user.model';
 import { StoreService } from '../../services/store.service';
 import { AuthService } from '../../services/auth.service';
+import { Category } from 'src/app/models/product.model';
+import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
   selector: 'app-header',
@@ -14,28 +16,44 @@ import { AuthService } from '../../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
+  @Output() categorySelected = new EventEmitter<string>();
   activeMenu = false;
   counter = 0;
   profile!: User;
   profileValid = false;
 
+  categories: Category[] = [];
   showAccount = false;
   email = '';
 
   constructor(
     private storeService: StoreService,
-    private authService: AuthService
+    private authService: AuthService,
+    private productsService: ProductsService
   ) { }
 
   ngOnInit(): void {
     this.loggedIn();
     this.storeService.myCart$.subscribe(products => {
       this.counter = products.length;
+    });
+    this.getCategories();
+  }
+
+  getCategories() {
+    this.productsService.getCategory().subscribe({
+      next: (res) => {
+        this.categories = res;
+      }
     })
   }
 
   toggleMenu(){
     this.activeMenu = !this.activeMenu;
+  }
+
+  filterCategory(id: string) {
+    this.categorySelected.emit(id);
   }
 
   loggedIn() {
@@ -49,22 +67,5 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logOut();
-  }
-
-  // Todo delete this function
-  login() {
-    /*this.authService
-    .loginAndGet('juan-test@mail.com','98741')
-    // .pipe(
-    //   switchMap(actualToken => {
-    //     this.token = actualToken.access_token;
-    //     console.log(this.token)
-    //     return this.authService.profile(this.token);
-    //   })
-    // )
-    .subscribe(user => {
-      this.profileValid = true;
-      this.profile = user;
-    })*/
   }
 }
