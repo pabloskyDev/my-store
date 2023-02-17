@@ -15,7 +15,7 @@
   </div>
   <div class="row pt-2 pb-2 products__links">
     <ul class="slider">
-      <li><a (click)="getProducts()" [ngClass]="activeDefault ? 'active' : ''">All</a></li>
+      <li><a (click)="reload()" [ngClass]="activeDefault ? 'active' : ''">All</a></li>
       <li *ngFor="let category of categories"><a [id]="category.id" (click)="getProductCategory(category.id)" [ngClass]="idCategory === category.id ? 'active' : ''">{{ category.name }}</a></li>
     </ul>
   </div>
@@ -25,7 +25,7 @@
       [product]="product" *ngFor="let product of products | paginate: {itemsPerPage: 12, currentPage: page}"
       (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)">
     </app-product>
-    <button (click)="getProducts()" *ngIf="!idCategory">load more</button>
+    <button (click)="getProducts()" *ngIf="(!idCategory && productLength >= 10)">load more</button>
     <button (click)="getProductCategory()" *ngIf="(idCategory && categoryLength >= 10)">load more</button>
   </div>
   <pagination-controls (pageChange)="page = $event" class=" p-2 text center"></pagination-controls>

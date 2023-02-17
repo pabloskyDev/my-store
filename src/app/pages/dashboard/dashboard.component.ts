@@ -19,6 +19,7 @@ export class DashboardComponent implements OnInit {
   total = 0;
   products: Product[] = []
   product!: Product;
+  productLength = 0;
 
   showProductDetail = false;
   productChosen!: Product;
@@ -61,13 +62,13 @@ export class DashboardComponent implements OnInit {
 
   getProducts() {
     this.activeDefault = true;
-    console.log(this.idCategory);
     if(this.idCategory) {
       this.idCategory = '';
     }
     this.productsService.getProductsByPage(this.limit, this.offset)
     .subscribe({
       next: (data) => {
+        this.productLength = data.length;
         this.products = [...this.products, ...data];
         this.offset += this.limit;
       },
@@ -99,6 +100,10 @@ export class DashboardComponent implements OnInit {
         }
       })
     }
+  }
+
+  reload() {
+    location.reload();
   }
 
   onAddToShoppingCart(product: Product){
