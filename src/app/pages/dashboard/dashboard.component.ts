@@ -49,6 +49,7 @@ export class DashboardComponent implements OnInit {
     this.productsService.getCategory().subscribe({
       next: (res) => {
         this.categories = res;
+        // console.log(this.categories);
       }
     })
   }
@@ -83,7 +84,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
-  getProductCategory(id?: any) {
+  getProductCategory(id?: string) {
     if(id) {
       this.activeDefault = false;
       this.offsetC = 0;
@@ -91,7 +92,7 @@ export class DashboardComponent implements OnInit {
       this.idCategory = id;
     }
     if(this.idCategory) {
-      console.log(this.limitC + ' - ' + this.offsetC);
+      // console.log(this.limitC + ' - ' + this.offsetC);
       this.productsService.getProductsByCategory(this.idCategory, this.limitC, this.offsetC).subscribe({
         next: (data) => {
           this.categoryLength = data.length;
