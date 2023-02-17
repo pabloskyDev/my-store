@@ -88,6 +88,14 @@
     }
   }
 }
+
+::ng-deep nav .ngx-pagination {
+  margin: 0;
+  .current {
+    background: var(--primary);
+  }
+}
+
 @media screen and (min-width: 780px) {
   .products {
     &__detail {
