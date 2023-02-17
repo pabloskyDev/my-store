@@ -65,6 +65,12 @@
       display: none;
     }
   }
+  &__list {
+    .btn-more {
+      border-radius: 10px;
+      padding: 8px;
+    }
+  }
   &__detail {
     position: fixed;
     top: 60px;
