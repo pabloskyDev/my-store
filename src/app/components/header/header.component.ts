@@ -34,10 +34,14 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.loggedIn();
+    this.getCounter();
+    this.getCategories();
+  }
+
+  getCounter() {
     this.storeService.myCart$.subscribe(products => {
       this.counter = products.length;
     });
-    this.getCategories();
   }
 
   getCategories() {
