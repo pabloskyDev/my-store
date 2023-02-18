@@ -20,8 +20,19 @@ export class StoreService {
   }
 
   addProduct(product: Product) {
-    this.myShoppingCart.push(product);
-    this.myCart.next(this.myShoppingCart);
+    if(this.myShoppingCart.length == 0) {
+      this.myShoppingCart.push(product);
+      this.myCart.next(this.myShoppingCart);
+    }else{
+      if(this.myShoppingCart.indexOf(product) === -1) {
+        this.myShoppingCart.push(product);
+        this.myCart.next(this.myShoppingCart);
+      }else {
+        const index = this.myShoppingCart.indexOf(product);
+        this.myShoppingCart.splice(index, 1);
+        this.myCart.next(this.myShoppingCart);
+      }
+    }
   }
 
   getTotal() {
