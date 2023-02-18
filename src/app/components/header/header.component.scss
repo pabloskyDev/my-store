@@ -1,6 +1,9 @@
 .show-mobile {
   display: block;
   box-shadow: 0px 2px 5px rgb(black, .2);
+  p {
+    line-height: 26px;
+  }
   > div {
     button {
       border: 0;

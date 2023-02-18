@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 import { User } from '../../models/user.model';
 import { StoreService } from '../../services/store.service';
@@ -16,6 +16,7 @@ import { ProductsService } from 'src/app/services/products.service';
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() showCart = false;
   @Output() categorySelected = new EventEmitter<string>();
   activeMenu = false;
   counter = 0;
