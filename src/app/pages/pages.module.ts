@@ -13,13 +13,15 @@ import { InputComponent } from '../components/input/input.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductDetailComponent } from './dashboard/product-detail/product-detail.component';
 import { ProductFormComponent } from './dashboard/product-form/product-form.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 
 @NgModule({
   declarations: [
     ProfileComponent,
     DashboardComponent,
-    ProductFormComponent
+    ProductFormComponent,
+    ShoppingCartComponent
   ],
   imports: [
     CommonModule,

@@ -110,7 +110,6 @@ export class DashboardComponent implements OnInit {
   onAddToShoppingCart(product: Product){
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
-    console.log(this.total);
   }
 
   onShowDetail(id: string) {
