@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -9,6 +9,7 @@ import { StoreService } from 'src/app/services/store.service';
 })
 export class ShoppingCartComponent implements OnInit {
 
+  @Output() showCart = new EventEmitter<boolean>();
   products: Product[] = [];
   constructor(
     private storeService: StoreService
@@ -19,6 +20,10 @@ export class ShoppingCartComponent implements OnInit {
     this.getShoppingCart();
   }
 
+  toggleCart() {
+    this.showCart.emit(false);
+  }
+
   getProductSelected(products?: Product[]) {
       console.log(products);
 
@@ -27,9 +32,9 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   getShoppingCart() {
-    this.products = this.storeService.getShoppingCart();
-    console.log('opción 2');
-    console.log(this.products);
+    // this.products = this.storeService.getShoppingCart();
+    // console.log('opción 2');
+    // console.log(this.products);
   }
 
 }

@@ -6,7 +6,7 @@
     </div>
     <p *ngIf="showCart" class="p-bold">Shopping cart</p>
     <div *ngIf="!showCart">
-      <a href="/cart" (click)="viewCart()"><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>
+      <a><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>
       <span class="counter"> {{ counter }} </span>
     </div>
     <div *ngIf="showCart"></div>

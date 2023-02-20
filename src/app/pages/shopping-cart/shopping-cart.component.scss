@@ -1,0 +1,22 @@
+.detail {
+  overflow-y: auto;
+  &__cancel {
+    background: transparent;
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: 5px;
+    button {
+      border: 0;
+      background: transparent;
+      color: var(--secondary);
+      cursor: pointer;
+      span {
+        background: transparent;
+      }
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}

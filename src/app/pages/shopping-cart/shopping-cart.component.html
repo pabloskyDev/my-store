@@ -1,6 +1,11 @@
-<app-header class="header w-full" [showCart]="true" (productSelected)="getProductSelected($event)"></app-header>
+<!-- <app-header class="header w-full" [showCart]="true" (productSelected)="getProductSelected($event)"></app-header>
 <div class="container space-header p-1">
   <div class="row">
     <p>shopping-cart works!</p>
+  </div>
+</div> -->
+<div class="container detail">
+  <div class="detail__cancel">
+    <button (click)="toggleCart()"><span class="material-symbols-outlined">close</span></button>
   </div>
 </div>

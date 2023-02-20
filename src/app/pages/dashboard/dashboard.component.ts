@@ -32,6 +32,8 @@ export class DashboardComponent implements OnInit {
   categories: Category[] = [];
   activeDefault = false;
 
+  showShoppingCart = false;
+
   constructor(
     private fb: FormBuilder,
     private storeService: StoreService,
@@ -147,6 +149,10 @@ export class DashboardComponent implements OnInit {
 
   addNewProduct() {
     this.router.navigate(['/form']);
+  }
+
+  toggleShoppingCart(show: boolean) {
+    this.showShoppingCart = show;
   }
 
   onSubmit() {
