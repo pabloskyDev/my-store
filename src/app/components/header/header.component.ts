@@ -4,7 +4,7 @@ import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { User } from '../../models/user.model';
 import { StoreService } from '../../services/store.service';
 import { AuthService } from '../../services/auth.service';
-import { Category } from 'src/app/models/product.model';
+import { Category, Product } from 'src/app/models/product.model';
 import { ProductsService } from 'src/app/services/products.service';
 
 @Component({
@@ -18,7 +18,9 @@ export class HeaderComponent implements OnInit {
 
   @Input() showCart = false;
   @Output() categorySelected = new EventEmitter<string>();
+  @Output() productSelected = new EventEmitter<Product[]>();
   activeMenu = false;
+  products: Product[] = [];
   counter = 0;
   profile!: User;
   profileValid = false;
@@ -42,6 +44,7 @@ export class HeaderComponent implements OnInit {
   getCounter() {
     this.storeService.myCart$.subscribe(products => {
       this.counter = products.length;
+      this.products = products;
     });
   }
 
@@ -60,6 +63,10 @@ export class HeaderComponent implements OnInit {
   filterCategory(id: string) {
     this.categorySelected.emit(id);
     this.toggleMenu();
+  }
+
+  viewCart() {
+    this.productSelected.emit(this.products);
   }
 
   loggedIn() {
