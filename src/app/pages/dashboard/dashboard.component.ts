@@ -151,8 +151,22 @@ export class DashboardComponent implements OnInit {
     this.router.navigate(['/form']);
   }
 
+  onShoppingCart(show: boolean) {
+    // console.log(this.showShoppingCart);
+    if(!this.showShoppingCart){
+      this.toggleShoppingCart(show);
+    }
+  }
+
   toggleShoppingCart(show: boolean) {
     this.showShoppingCart = show;
+    console.log(this.showShoppingCart);
+
+    // if(this.showShoppingCart === true) {
+    //   this.storeService.myCart$.subscribe(products => {
+    //     console.log(products);
+    //   });
+    // }
   }
 
   onSubmit() {

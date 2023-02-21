@@ -1,4 +1,4 @@
-<app-header class="header w-full" (categorySelected)="getProductCategory($event)"></app-header>
+<app-header class="header w-full" (categorySelected)="getProductCategory($event)" (showShoppingCart)="onShoppingCart($event)"></app-header>
 <div class="container space-header p-1 min-wh products">
   <div class="row products__search">
     <div class="col-10">
@@ -34,7 +34,7 @@
     <app-product-detail [product]="productChosen" [status]="statusDetail" (showDetail)="toggleProductDetail($event)" (productId)="deleteArrayProduct($event)"></app-product-detail>
   </div>
 
-  <div class="row products__detail" [class.active]="showShoppingCart">
+  <div class="row products__cart" [class.active]="showShoppingCart">
     <app-shopping-cart (showCart)="toggleShoppingCart($event)"></app-shopping-cart>
   </div>
 

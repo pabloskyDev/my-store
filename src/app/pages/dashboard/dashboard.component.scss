@@ -71,7 +71,7 @@
       padding: 8px;
     }
   }
-  &__detail {
+  &__detail, &__cart {
     position: fixed;
     top: 60px;
     left: 0%;
@@ -98,7 +98,7 @@
 
 @media screen and (min-width: 780px) {
   .products {
-    &__detail {
+    &__detail, &__cart {
       top: 73px;
       left: 50%;
       &.active{
