@@ -18,9 +18,8 @@ export class HeaderComponent implements OnInit {
 
   @Input() showCart = false;
   @Output() categorySelected = new EventEmitter<string>();
-  @Output() productSelected = new EventEmitter<Product[]>();
+  @Output() showShoppingCart = new EventEmitter<boolean>();
   activeMenu = false;
-  products: Product[] = [];
   counter = 0;
   profile!: User;
   profileValid = false;
@@ -44,7 +43,6 @@ export class HeaderComponent implements OnInit {
   getCounter() {
     this.storeService.myCart$.subscribe(products => {
       this.counter = products.length;
-      this.products = products;
     });
   }
 
@@ -66,7 +64,7 @@ export class HeaderComponent implements OnInit {
   }
 
   viewCart() {
-    this.productSelected.emit(this.products);
+    this.showShoppingCart.emit(true);
   }
 
   loggedIn() {
