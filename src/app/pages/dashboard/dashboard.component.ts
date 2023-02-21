@@ -155,18 +155,21 @@ export class DashboardComponent implements OnInit {
     // console.log(this.showShoppingCart);
     if(!this.showShoppingCart){
       this.toggleShoppingCart(show);
+      this.getProductSelected();
     }
   }
 
   toggleShoppingCart(show: boolean) {
     this.showShoppingCart = show;
     console.log(this.showShoppingCart);
+  }
 
-    // if(this.showShoppingCart === true) {
-    //   this.storeService.myCart$.subscribe(products => {
-    //     console.log(products);
-    //   });
-    // }
+  getProductSelected() {
+    if(this.showShoppingCart === true) {
+      this.storeService.myCart$.subscribe(products => {
+        console.log(products);
+      });
+    }
   }
 
   onSubmit() {
