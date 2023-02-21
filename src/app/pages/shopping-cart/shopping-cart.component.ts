@@ -16,25 +16,9 @@ export class ShoppingCartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // this.getProductSelected();
-    this.getShoppingCart();
   }
 
   toggleCart() {
     this.showCart.emit(false);
   }
-
-  getProductSelected(products?: Product[]) {
-      console.log(products);
-
-    // this.storeService.myCart$.subscribe(products => {
-    // });
-  }
-
-  getShoppingCart() {
-    // this.products = this.storeService.getShoppingCart();
-    // console.log('opción 2');
-    // console.log(this.products);
-  }
-
 }
