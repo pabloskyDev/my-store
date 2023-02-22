@@ -34,8 +34,9 @@
     <app-product-detail [product]="productChosen" [status]="statusDetail" (showDetail)="toggleProductDetail($event)" (productId)="deleteArrayProduct($event)"></app-product-detail>
   </div>
 
-  <div class="row products__cart" [class.active]="showShoppingCart">
-    <app-shopping-cart (showCart)="toggleShoppingCart($event)"></app-shopping-cart>
+  <!-- *ngIf="showShoppingCart" [class.active]="showShoppingCart" -->
+  <div class="row products__cart" *ngIf="showShoppingCart" [ngClass]="showShoppingCart === true ? 'active' : ''">
+    <app-shopping-cart (showCart)="toggleShoppingCart($event)" [products]="productsSelected"></app-shopping-cart>
   </div>
 
 </div>

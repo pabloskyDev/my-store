@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Product } from 'src/app/models/product.model';
 import { StoreService } from 'src/app/services/store.service';
 
@@ -10,12 +10,14 @@ import { StoreService } from 'src/app/services/store.service';
 export class ShoppingCartComponent implements OnInit {
 
   @Output() showCart = new EventEmitter<boolean>();
-  products: Product[] = [];
+  @Input() products: Product[] = [];
+
   constructor(
     private storeService: StoreService
   ) { }
 
   ngOnInit(): void {
+    console.log(this.products);
   }
 
   toggleCart() {
