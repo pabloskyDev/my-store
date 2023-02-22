@@ -1,6 +1,6 @@
 <div class="show-mobile">
   <div class="flex between p-2 ">
-    <button (click)="toggleMenu()" class="cursor"><img src="./assets/svg/icon_menu.svg" alt="menu"></button>
+    <button *ngIf="!showCart" (click)="toggleMenu()" class="cursor"><img src="./assets/svg/icon_menu.svg" alt="menu"></button>
     <div *ngIf="!showCart">
       <a><img src="./assets/svg/logo_yard_sale.svg" alt="logo"></a>
     </div>

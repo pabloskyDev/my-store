@@ -1,4 +1,4 @@
-<app-header class="header w-full" (categorySelected)="getProductCategory($event)" (showShoppingCart)="onShoppingCart($event)"></app-header>
+<app-header class="header w-full" (categorySelected)="getProductCategory($event)" (showShoppingCart)="onShoppingCart($event)" [showCart]="showHeaderCart"></app-header>
 <div class="container space-header p-1 min-wh products">
   <div class="row products__search">
     <div class="col-10">

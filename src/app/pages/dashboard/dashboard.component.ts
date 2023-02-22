@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit {
 
   productsSelected: Product[] = [];
   showShoppingCart = false;
+  showHeaderCart = false;
 
   constructor(
     private fb: FormBuilder,
@@ -162,7 +163,10 @@ export class DashboardComponent implements OnInit {
   toggleShoppingCart(show: boolean) {
     this.showShoppingCart = show;
     if(this.showShoppingCart) {
+      this.showHeaderCart = true;
       this.getProductSelected();
+    }else {
+      this.showHeaderCart = false;
     }
   }
 
