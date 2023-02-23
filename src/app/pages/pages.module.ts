@@ -14,6 +14,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { ProductDetailComponent } from './dashboard/product-detail/product-detail.component';
 import { ProductFormComponent } from './dashboard/product-form/product-form.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { ProductCartComponent } from './shopping-cart/product-cart/product-cart.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
     ReactiveFormsModule,
     InputComponent,
     NgxPaginationModule,
-    ProductDetailComponent
+    ProductDetailComponent,
+    ProductCartComponent
   ]
 })
 export class PagesModule { }
