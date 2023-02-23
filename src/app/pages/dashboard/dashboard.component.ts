@@ -154,7 +154,6 @@ export class DashboardComponent implements OnInit {
   }
 
   onShoppingCart(show: boolean) {
-    // console.log(this.showShoppingCart);
     if(!this.showShoppingCart){
       this.toggleShoppingCart(show);
     }

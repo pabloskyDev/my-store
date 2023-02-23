@@ -55,6 +55,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleMenu(){
+    this.showShoppingCart.emit(false);
     this.activeMenu = !this.activeMenu;
   }
 
