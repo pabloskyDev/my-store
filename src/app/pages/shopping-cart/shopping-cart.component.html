@@ -2,7 +2,7 @@
   <div class="detail__cancel">
     <button (click)="toggleCart()"><span class="material-symbols-outlined">close</span></button>
   </div>
-  <div class="datail__content">
-    <p>this is a test</p>
+  <div class="row datail__content">
+    <app-product-cart *ngFor="let product of products"></app-product-cart>
   </div>
 </div>

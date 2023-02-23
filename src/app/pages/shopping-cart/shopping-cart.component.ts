@@ -17,7 +17,7 @@ export class ShoppingCartComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.products);
+    // console.log(this.products);
   }
 
   toggleCart() {
