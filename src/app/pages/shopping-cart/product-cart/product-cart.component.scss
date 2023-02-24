@@ -1,0 +1,16 @@
+.product_cart {
+  &__cancel {
+    button {
+      border: 0;
+      background: transparent;
+      color: var(--secondary);
+      cursor: pointer;
+      span {
+        background: transparent;
+      }
+      &:hover {
+        color: var(--primary);
+      }
+    }
+  }
+}
