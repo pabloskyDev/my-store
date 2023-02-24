@@ -2,10 +2,13 @@
   overflow-y: auto;
   &__cancel {
     background: transparent;
-    position: absolute;
+    // position: absolute;
     z-index: 2;
     top: 5px;
     right: 5px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
     button {
       border: 0;
       background: transparent;
