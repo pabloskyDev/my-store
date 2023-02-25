@@ -16,7 +16,10 @@ export class ProductCartComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.product);
+    if(this.product.images[0]) {
+      this.imgUrl = this.product.images[0];
+    }
   }
+
 
 }
