@@ -23,7 +23,8 @@
     }
   }
   &__content {
-    height: 100vh;
+    max-height: 55vh;
     overflow-y: auto;
+    margin-bottom: 40px;
   }
 }
