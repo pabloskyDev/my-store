@@ -10,6 +10,7 @@ import { StoreService } from 'src/app/services/store.service';
 export class ShoppingCartComponent implements OnInit {
 
   @Output() showCart = new EventEmitter<boolean>();
+  @Output() removeProduct = new EventEmitter<Product>();
   @Input() products: Product[] = [];
   total!: number[];
   totalPrice!: number;
@@ -35,7 +36,7 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   removeToShoppingCart(product: Product) {
-    console.log(product);
+    this.removeProduct.emit(product);
   }
 
 }

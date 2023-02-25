@@ -36,7 +36,7 @@
 
   <!-- *ngIf="showShoppingCart" [class.active]="showShoppingCart" -->
   <div class="row products__cart" *ngIf="showShoppingCart" [ngClass]="showShoppingCart === true ? 'active' : ''">
-    <app-shopping-cart (showCart)="toggleShoppingCart($event)" [products]="productsSelected"></app-shopping-cart>
+    <app-shopping-cart (showCart)="toggleShoppingCart($event)" [products]="productsSelected" (removeProduct)="onAddToShoppingCart($event)"></app-shopping-cart>
   </div>
 
 </div>
