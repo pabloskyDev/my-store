@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Product } from 'src/app/models/product.model';
 
@@ -12,13 +12,20 @@ import { Product } from 'src/app/models/product.model';
 export class ProductCartComponent implements OnInit {
 
   @Input() product!: Product;
+  @Output() removeProduct = new EventEmitter<Product>();
   imgUrl = '../../../../assets/images/bike.jpg';
+  activeProduct = false;
   constructor() { }
 
   ngOnInit(): void {
     if(this.product.images[0]) {
       this.imgUrl = this.product.images[0];
     }
+  }
+
+  onRemoveToCart() {
+    this.removeProduct.emit(this.product);
+    this.activeProduct = !this.activeProduct;
   }
 
 

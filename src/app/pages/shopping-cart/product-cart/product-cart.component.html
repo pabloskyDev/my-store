@@ -9,6 +9,6 @@
     {{ product.price | currency }}
   </p>
   <div class="flex column-center product-cart__cancel">
-    <button><span class="material-symbols-outlined">close</span></button>
+    <button><span class="material-symbols-outlined" (click)="onRemoveToCart()">close</span></button>
   </div>
 </div>

@@ -34,4 +34,8 @@ export class ShoppingCartComponent implements OnInit {
     this.totalPrice = this.total.reduce((a, b) => a + b, 0);
   }
 
+  removeToShoppingCart(product: Product) {
+    console.log(product);
+  }
+
 }
