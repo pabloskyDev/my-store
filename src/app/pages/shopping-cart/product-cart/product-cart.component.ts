@@ -12,6 +12,7 @@ import { Product } from 'src/app/models/product.model';
 export class ProductCartComponent implements OnInit {
 
   @Input() product!: Product;
+  imgUrl = '../../../../assets/images/bike.jpg';
   constructor() { }
 
   ngOnInit(): void {

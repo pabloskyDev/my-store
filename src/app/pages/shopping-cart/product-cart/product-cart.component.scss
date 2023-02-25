@@ -1,11 +1,13 @@
 .product-cart {
   margin-bottom: 8px;
   &__img {
-    border-radius: 10px;
+    border-radius: 14px;
     width: 60px;
+    min-width: 60px;
     height: 60px;
     img {
       width: 100%;
+      border-radius: 14px;
     }
   }
   &__name, &__price {
@@ -13,6 +15,12 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+  }
+  &__name {
+    width: 120px;
+  }
+  &__price {
+    width: 66px;
   }
   &__cancel {
     button {

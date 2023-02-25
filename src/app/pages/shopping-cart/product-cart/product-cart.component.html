@@ -1,12 +1,12 @@
 <div class="product-cart flex between">
   <div class="product-cart__img">
-    <img src="../../../../assets/images/bike.jpg" alt="" width="60px" height="60px">
+    <img [src]="imgUrl" alt="" width="60px" height="60px">
   </div>
   <p class="product-cart__name">
-    Round shelf
+    {{ product.title }}
   </p>
   <p class="product-cart__price p-bold">
-    $120.00
+    {{ product.price | currency }}
   </p>
   <div class="flex column-center product-cart__cancel">
     <button><span class="material-symbols-outlined">close</span></button>
