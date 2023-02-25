@@ -8,7 +8,6 @@
     right: 5px;
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 16px;
     button {
       border: 0;
       background: transparent;
@@ -23,8 +22,16 @@
     }
   }
   &__content {
-    max-height: 55vh;
+    max-height: 58vh;
     overflow-y: auto;
-    margin-bottom: 40px;
+  }
+  &__total {
+    div {
+      background: var(--secondary);
+      border-radius: 10px;
+      span {
+        background: inherit;
+      }
+    }
   }
 }

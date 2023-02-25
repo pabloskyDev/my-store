@@ -11,16 +11,27 @@ export class ShoppingCartComponent implements OnInit {
 
   @Output() showCart = new EventEmitter<boolean>();
   @Input() products: Product[] = [];
+  total!: number[];
+  totalPrice!: number;
 
   constructor(
     private storeService: StoreService
   ) { }
 
   ngOnInit(): void {
-    // console.log(this.products);
+    this.getTotal();
   }
 
   toggleCart() {
     this.showCart.emit(false);
   }
+
+  getTotal() {
+    this.total = this.products.map((product) =>
+    {
+      return product.price
+    })
+    this.totalPrice = this.total.reduce((a, b) => a + b, 0);
+  }
+
 }
