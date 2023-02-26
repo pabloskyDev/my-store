@@ -23,7 +23,8 @@
   <div class="row products__list">
     <app-product class="col-6 col-sm-3 col-md-3"
       [product]="product" *ngFor="let product of products | paginate: {itemsPerPage: 12, currentPage: page}"
-      (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)">
+      (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)"
+      [idProduct]="idProduct">
     </app-product>
     <button (click)="getProducts()" *ngIf="(!idCategory && productLength >= 10)" class="col-6 col-md-6 mx-auto btn-more bg-primary">Load more</button>
     <button (click)="getProductCategory()" *ngIf="(idCategory && categoryLength >= 10)" class="col-6 col-md-6 mx-auto btn-more bg-primary">Load more</button>
@@ -36,7 +37,7 @@
 
   <!-- *ngIf="showShoppingCart" [class.active]="showShoppingCart" -->
   <div class="row products__cart" *ngIf="showShoppingCart" [ngClass]="showShoppingCart === true ? 'active' : ''">
-    <app-shopping-cart (showCart)="toggleShoppingCart($event)" [products]="productsSelected" (removeProduct)="onAddToShoppingCart($event)"></app-shopping-cart>
+    <app-shopping-cart (showCart)="toggleShoppingCart($event)" [products]="productsSelected" (removeProduct)="onAddToShoppingCart($event)" (idProduct)="noSelectProduct($event)"></app-shopping-cart>
   </div>
 
 </div>

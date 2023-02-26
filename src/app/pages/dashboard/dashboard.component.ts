@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   productsSelected: Product[] = [];
   showShoppingCart = false;
   showHeaderCart = false;
+  idProduct!: string;
 
   constructor(
     private fb: FormBuilder,
@@ -114,6 +115,12 @@ export class DashboardComponent implements OnInit {
   onAddToShoppingCart(product: Product){
     this.storeService.addProduct(product);
     this.total = this.storeService.getTotal();
+  }
+
+  noSelectProduct(id: string) {
+    if(id) {
+      this.idProduct = id;
+    }
   }
 
   onShowDetail(id: string) {
