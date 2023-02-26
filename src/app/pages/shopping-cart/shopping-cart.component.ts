@@ -11,6 +11,7 @@ export class ShoppingCartComponent implements OnInit {
 
   @Output() showCart = new EventEmitter<boolean>();
   @Output() removeProduct = new EventEmitter<Product>();
+  @Output() idProduct = new EventEmitter<string>();
   @Input() products: Product[] = [];
   total!: number[];
   totalPrice!: number;
@@ -37,6 +38,7 @@ export class ShoppingCartComponent implements OnInit {
 
   removeToShoppingCart(product: Product) {
     this.removeProduct.emit(product);
+    this.idProduct.emit(product.id);
   }
 
 }
