@@ -1,5 +1,5 @@
 <app-header class="header w-full" (categorySelected)="getProductCategory($event)" (showShoppingCart)="onShoppingCart($event)" [showCart]="showHeaderCart"></app-header>
-<div class="container space-header p-1 min-wh products">
+<div class="container space-header p-2 min-wh products">
   <div class="row products__search">
     <div class="col-10">
       <form [formGroup]="searchProducts" (ngSubmit)="onSubmit()" class="">
@@ -15,8 +15,8 @@
   </div>
   <div class="row pt-2 pb-2 products__links">
     <ul class="slider">
-      <li><a (click)="reload()" [ngClass]="activeDefault ? 'active' : ''">All</a></li>
-      <li *ngFor="let category of categories"><a [id]="category.id" (click)="getProductCategory(category.id)" [ngClass]="idCategory === category.id ? 'active' : ''">{{ category.name }}</a></li>
+      <li><a (click)="reload()" class="cursor" [ngClass]="activeDefault ? 'active' : ''">All</a></li>
+      <li *ngFor="let category of categories"><a [id]="category.id" (click)="getProductCategory(category.id)" class="cursor" [ngClass]="idCategory === category.id ? 'active' : ''">{{ category.name }}</a></li>
     </ul>
   </div>
 
@@ -26,8 +26,8 @@
       (addedProduct)="onAddToShoppingCart($event)" (showProduct)="onShowDetail($event)"
       [idProduct]="idProduct">
     </app-product>
-    <button (click)="getProducts()" *ngIf="(!idCategory && productLength >= 10)" class="col-6 col-md-6 mx-auto btn-more bg-primary">Load more</button>
-    <button (click)="getProductCategory()" *ngIf="(idCategory && categoryLength >= 10)" class="col-6 col-md-6 mx-auto btn-more bg-primary">Load more</button>
+    <button (click)="getProducts()" *ngIf="(!idCategory && productLength >= 10)" class="col-10 mx-auto btn-more bg-primary cursor">Load more</button>
+    <button (click)="getProductCategory()" *ngIf="(idCategory && categoryLength >= 10)" class="col-10 mx-auto btn-more bg-primary cursor">Load more</button>
   </div>
   <pagination-controls (pageChange)="page = $event" class=" p-2 text center"></pagination-controls>
 
