@@ -19,7 +19,7 @@
     <div class="navigation flex column between">
       <ul class="navigation__articles mt-3">
         <li><a class="p-bold" href="/">All</a></li>
-        <li><a *ngFor="let category of categories" class="p-bold" (click)="filterCategory(category.id)">{{ category.name }}</a></li>
+        <li *ngFor="let category of categories"><a  class="p-bold" (click)="filterCategory(category.id)">{{ category.name }}</a></li>
       </ul>
       <div class="navigation__auth border-top" *ngIf="showAccount">
         <ul>
@@ -45,18 +45,20 @@
         <img src="./assets/svg/logo_yard_sale.svg" alt="logo">
       </a>
       <ul>
-        <li><a href="">All</a></li>
-        <li><a href="">Clothes</a></li>
-        <li><a href="">Electronics</a></li>
-        <li><a (click)="logout()">Salir</a></li>
+        <li><a href="/">All</a></li>
+        <li *ngFor="let category of categories"><a (click)="filterCategory(category.id)" class="cursor">{{ category.name }}</a></li>
       </ul>
     </nav>
     <div class="info">
       <div class="account">
-        <!-- <p *ngIf="profileValid"> {{ profile.email }} </p> -->
+        <a href="/auth" class="p-bold" *ngIf="!showAccount">Log in</a>
+        <div *ngIf="showAccount">
+          <p class="p-text">{{ email }}</p>
+        </div>
       </div>
-      <div>
-        <a><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>
+      <a class="p-bold cursor px-2" (click)="logout()">Sign out</a>
+      <div class="cart cursor" *ngIf="!showCart">
+        <a (click)="viewCart()"><img src="./assets/svg/icon_shopping_cart.svg" alt="logo"></a>
         <span class="counter"> {{ counter }} </span>
       </div>
     </div>
