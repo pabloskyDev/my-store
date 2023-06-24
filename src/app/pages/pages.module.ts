@@ -15,6 +15,12 @@ import { ProductDetailComponent } from './dashboard/product-detail/product-detai
 import { ProductFormComponent } from './dashboard/product-form/product-form.component';
 import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 import { ProductCartComponent } from './shopping-cart/product-cart/product-cart.component';
+import { HomeComponent } from './home/home.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { CategoryComponent } from './category/category.component';
+import { MyCartComponent } from './my-cart/my-cart.component';
+import { RegisterComponent } from './register/register.component';
+import { RecoveryComponent } from './recovery/recovery.component';
 
 
 @NgModule({
@@ -22,7 +28,13 @@ import { ProductCartComponent } from './shopping-cart/product-cart/product-cart.
     ProfileComponent,
     DashboardComponent,
     ProductFormComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    HomeComponent,
+    NotFoundComponent,
+    CategoryComponent,
+    MyCartComponent,
+    RegisterComponent,
+    RecoveryComponent
   ],
   imports: [
     CommonModule,
